@@ -15,7 +15,7 @@ class Popular extends Component {
 
            
               <div className="col-md-6" key={index}>
-                <img src={`https://image.tmdb.org/t/p/w185_and_h278_bestv2/${item.poster_path}`} width="50%" />
+                <img src={`https://image.tmdb.org/t/p/w185_and_h278_bestv2/${item.poster_path}`} width="50%" alt={item.title} />
                 <h4>{item.title}</h4>
                 <p>{item.overview}</p>
         

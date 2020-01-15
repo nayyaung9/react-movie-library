@@ -6,9 +6,13 @@ div.scrollmenu {
 }
 
 div.scrollmenu img {    
-  margin-right: 15px;
+  margin: 15px 15px 0 10px;
   border-radius: 10px;
   cursor: pointer;
+  transition: all .2s ease-in-out;
+}
+div.scrollmenu img:hover {
+  transform: scale(1.1);
 }
 
 div.scrollmenu::-webkit-scrollbar {    
