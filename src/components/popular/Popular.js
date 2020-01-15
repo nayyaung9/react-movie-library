@@ -8,8 +8,23 @@ class Popular extends Component {
   }
   render() {
     return (
-      <div>Popular</div>
+      <div>
+        {this.props.popular.map((item, index) => {
+          return (
+            <div key={index}>
+              <h4>{item.title}</h4>
+              <p>{item.overview}</p>
+            </div>
+          )
+        })}
+      </div>
     )
+  }
+}
+
+const mapStateToProps = state => {
+  return {
+    popular: state.popularMovies.popular
   }
 }
 
@@ -18,7 +33,8 @@ const mapDispatchToProps = dispatch => {
     getAllPopularMovies: () => dispatch(popularActions.getAllPopularMovies())
   }
 }
+
 export default connect(
-  null, 
+  mapStateToProps, 
   mapDispatchToProps
 )(Popular);
