@@ -11,10 +11,10 @@ const persistConfig = {
 
 const middleWareList = applyMiddleware(reduxThunk);
 
-const persistReducer = persistReducer(persistConfig, rootReducers);
+const persistReducers = persistReducer(persistConfig, rootReducers);
 
 export const store = createStore(
-  persistReducer,
+  persistReducers,
   compose(
     middleWareList,
     window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
