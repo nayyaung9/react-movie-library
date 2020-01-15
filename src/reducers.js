@@ -1,5 +1,6 @@
 import { combineReducers } from 'redux';
+import popular from './reducers/popular';
 
 export default combineReducers({
-  Example: () => 'Hi There'
+  popularMovies: popular
 })

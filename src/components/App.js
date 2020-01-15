@@ -3,6 +3,7 @@ import { Router, Route } from 'react-router-dom';
 import history from '../history';
 
 // Components
+import Home from './Home';
 import Popular from './popular/Popular';
 import Upcoming from './upcoming/Upcoming';
 
@@ -12,7 +13,7 @@ class App extends React.Component {
       <div>
         <Router history={history}>
        
-          {/* <Route exact path='/' component={Home} /> */}
+          <Route exact path='/' component={Home} />
           <Route path='/popular/movies' component={Popular} />
           <Route path='/upcoming/movies' component={Upcoming} />
         </Router>
