@@ -5,7 +5,7 @@ import { upcomingActions } from '../actions/upcoming';
 import { nowPlayingActions } from '../actions/nowPlaying';
 import { genresActions } from '../actions/genres';
 
-import { Drawer, Button } from 'antd';
+import { Drawer, Button, Skeleton } from 'antd';
 
 class Home extends React.Component {
   state = { visible: false };
@@ -46,7 +46,9 @@ class Home extends React.Component {
         </Drawer>
         <h5>In Theaters</h5>
         <div className="scrollmenu">
-          { this.props.nowPlaying.map((item, index) => {
+          { this.props.nowPlayingLoading 
+            ? <Skeleton avatar active />
+            :this.props.nowPlaying.map((item, index) => {
             return (
               <span key={index}>
                 <img src={`https://image.tmdb.org/t/p/w185_and_h278_bestv2/${item.poster_path}`} alt={item.title} />
@@ -57,10 +59,12 @@ class Home extends React.Component {
           })}
         </div>
         <h5>Upcoming movies</h5>
-        <div className="row text-center">
-          {this.props.popular.map((item, index) => {
+        <div className="row movie_board text-center">
+          { this.props.upcomingLoading 
+          ? <Skeleton avatar active paragraph={{ rows: 4 }} />
+          : this.props.popular.map((item, index) => {
             return (
-              <div className="col-md-4" key={index}>
+              <div className="col-md-3" key={index}>
                 <img src={`https://image.tmdb.org/t/p/w185_and_h278_bestv2/${item.poster_path}`} alt={item.title} />
                 <h4>{item.title}</h4>
               </div>
@@ -75,8 +79,13 @@ class Home extends React.Component {
 const mapStateToProps = state => {
   return {
     popular: state.popularMovies.popular,
+
     upcoming: state.upcomingMovies.upcoming,
+    upcomingLoading: state.upcomingMovies.loading,
+
     nowPlaying: state.nowPlaying.nowplaying,
+    nowPlayingLoading: state.nowPlaying.loading,
+
     genres: state.genres.genres
   }
 }

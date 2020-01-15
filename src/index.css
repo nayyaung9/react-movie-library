@@ -19,3 +19,7 @@ div.scrollmenu::-webkit-scrollbar {
   display: none;
 }
 
+.movie_board img {
+  border-radius: 10px;
+  cursor: pointer;
+}
