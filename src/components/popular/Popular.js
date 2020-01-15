@@ -8,15 +8,23 @@ class Popular extends Component {
   }
   render() {
     return (
-      <div>
+      <div className="container">
+        <div className="row">
         {this.props.popular.map((item, index) => {
           return (
-            <div key={index}>
-              <h4>{item.title}</h4>
-              <p>{item.overview}</p>
-            </div>
+
+           
+              <div className="col-md-6" key={index}>
+                <img src={`https://image.tmdb.org/t/p/w185_and_h278_bestv2/${item.poster_path}`} width="50%" />
+                <h4>{item.title}</h4>
+                <p>{item.overview}</p>
+        
+              </div>
+
+          
           )
         })}
+</div>
       </div>
     )
   }
@@ -35,6 +43,6 @@ const mapDispatchToProps = dispatch => {
 }
 
 export default connect(
-  mapStateToProps, 
+  mapStateToProps,
   mapDispatchToProps
 )(Popular);
