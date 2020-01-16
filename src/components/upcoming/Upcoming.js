@@ -12,6 +12,7 @@ class UpComing extends Component {
     return (
       <AppDrawer>
         <div className="container">
+          <h3>Upcoming movies</h3>
           <div className="scrollmenu">
             {this.props.upcomingLoading
               ? <Skeleton avatar active paragraph={{ rows: 4 }} />

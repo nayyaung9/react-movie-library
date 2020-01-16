@@ -47,7 +47,7 @@ div.scrollmenu::-webkit-scrollbar {
   margin: 16px;
 }
 
-.ant-menu {
+/* .ant-menu {
   padding: 0 10px !important;
 }
 .ant-menu-item, .ant-menu-submenu-title {
@@ -77,4 +77,4 @@ div.scrollmenu::-webkit-scrollbar {
   line-height: 34px !important;
   color: #000 !important;
   background-color: #fff !important;
-}
+} */

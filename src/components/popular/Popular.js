@@ -4,6 +4,7 @@ import { popularActions } from '../../actions/popular';
 import { connect } from 'react-redux'
 import { Skeleton } from 'antd';
 import { Link } from 'react-router-dom';
+
 class Popular extends Component {
   componentDidMount() {
     this.props.getAllPopularMovies();
