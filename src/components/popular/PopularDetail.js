@@ -3,9 +3,10 @@ import AppDrawer from './../Drawer';
 
 import { popularActions } from '../../actions/popular';
 import { similarActions } from '../../actions/similar';
+import { reviewActions } from '../../actions/review';
 import { connect } from 'react-redux';
 
-import { Avatar, Skeleton, Divider } from 'antd';
+import { Avatar, Skeleton, Divider, Comment } from 'antd';
 
 const formatter = new Intl.NumberFormat('en-US', {
   style: 'currency',
@@ -29,7 +30,10 @@ class PopularDetail extends Component {
     });
     this.props.getAllSimilarMovies({
       id: this.props.match.params.id
-    })
+    });
+    this.props.getMovieDetailReviews({
+      id: this.props.match.params.id
+    });
   }
 
   render() {
@@ -76,10 +80,10 @@ class PopularDetail extends Component {
 
           </div>
           <Divider />
-            Budget: {formatter.format(movie.budget)} <br />
+          Budget: {formatter.format(movie.budget)} <br />
 
-            runtime: {timeConvert(movie.runtime)}
-            <Divider />
+          runtime: {timeConvert(movie.runtime)}
+          <Divider />
           <div className="genres">
             <h4>Genres</h4>
             {movie.genres && movie.genres.map((item, index) => {
@@ -92,8 +96,8 @@ class PopularDetail extends Component {
 
           <div className="similar__movies">
             <h3>Similar movies</h3>
-          <div className="scrollmenu">
-            {this.props.similarMovies.map((item, index) => {
+            <div className="scrollmenu">
+              {this.props.similarMovies.map((item, index) => {
                 return (
                   <div key={index}>
                     <img src={`https://image.tmdb.org/t/p/w185_and_h278_bestv2/${item.poster_path}`} alt={item.title} />
@@ -101,7 +105,30 @@ class PopularDetail extends Component {
                   </div>
                 )
               })}
+            </div>
           </div>
+
+          <div className="comments">
+            {this.props.reviews.map((item, index) => {
+              return (
+                <Comment
+                  author={<a>{item.author}</a>}
+                  avatar={
+                    <Avatar
+                      src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png"
+                      alt="Han Solo"
+                    />
+                  }
+                  content={
+                    <p>
+                      {item.content}
+                    </p>
+
+                  }
+                />
+              )
+            })}
+
           </div>
 
         </div>
@@ -111,16 +138,18 @@ class PopularDetail extends Component {
 }
 
 const mapStateToProps = state => {
-  const { popularMovies, similarMovies } = state;
+  const { popularMovies, similarMovies, reviews } = state;
   return {
     movie: popularMovies.singlePopular,
-    similarMovies: similarMovies.similar
+    similarMovies: similarMovies.similar,
+    reviews: reviews.reviews
   }
 }
 const mapDispatchToProps = dispatch => {
   return {
     getPopularMovieDetail: data => dispatch(popularActions.getPopularMovieDetail(data)),
-    getAllSimilarMovies: data => dispatch(similarActions.getAllSimilarMovies(data))
+    getAllSimilarMovies: data => dispatch(similarActions.getAllSimilarMovies(data)),
+    getMovieDetailReviews: data => dispatch(reviewActions.getMovieDetailReview(data))
   }
 }
 export default connect(
