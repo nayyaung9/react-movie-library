@@ -1,6 +1,5 @@
 import api from '../api';
 import { UPCOMING_MOVIES_REQUEST, UPCOMING_MOVIES_SUCCESS } from '../constants/actionTypes';
-const API_KEY = '678a144bfd69768570aeb787fe269207';
 
 function getAllUpComingMovies() {
   function success(payload) {
@@ -12,7 +11,7 @@ function getAllUpComingMovies() {
 
   return dispatch => {
     dispatch(request(true))
-    api.get(`/movie/upcoming?api_key=${API_KEY}&language=en-US&page=1`)
+    api.get(`/movie/upcoming?api_key=${process.env.REACT_APP_API_KEY}&language=en-US&page=1`)
       .then(
         payload => {
           dispatch(success(payload.data.results))

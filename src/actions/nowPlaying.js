@@ -1,6 +1,5 @@
 import api from '../api';
 import { GET_NOW_PLAYING_MOVIES_REQUEST, GET_NOW_PLAYING_MOVIES_SUCCESS } from '../constants/actionTypes';
-const API_KEY = '678a144bfd69768570aeb787fe269207';
 
 function getNowPlayingMovies() {
   function success(payload) {
@@ -12,7 +11,7 @@ function getNowPlayingMovies() {
 
   return dispatch => {
     dispatch(request(true))
-    api.get(`/movie/now_playing?api_key=${API_KEY}&language=en-US&page=1&region=US`)
+    api.get(`/movie/now_playing?api_key=${process.env.REACT_APP_API_KEY}&language=en-US&page=1&region=US`)
       .then(
         payload => {
           dispatch(success(payload.data.results))

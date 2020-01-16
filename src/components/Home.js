@@ -1,4 +1,5 @@
 import React from 'react';
+import AppDrawer from './Drawer';
 import { connect } from 'react-redux';
 import { popularActions } from '../actions/popular';
 import { upcomingActions } from '../actions/upcoming';
@@ -6,7 +7,7 @@ import { nowPlayingActions } from '../actions/nowPlaying';
 import { genresActions } from '../actions/genres';
 
 import { Skeleton, Icon } from 'antd';
-import AppDrawer from './Drawer';
+import { Link } from 'react-router-dom';
 
 class Home extends React.Component {
   componentDidMount() {
@@ -18,7 +19,7 @@ class Home extends React.Component {
   render() {
     return (
       <AppDrawer>
-        <div className="container-fluid" style={{ margin: '20px auto' }}>
+        <div className="container" style={{ margin: '20px auto' }}>
           <div className="row">
             <div className="col-6">
               <h3>Movies</h3>
@@ -46,7 +47,7 @@ class Home extends React.Component {
               <h5>Upcoming</h5>
             </div>
             <div className="col-6 text-right">
-              <span>See all</span>
+              <Link to='/upcoming/movies' className="anchor">See all</Link>
             </div>
           </div>
 
@@ -68,7 +69,7 @@ class Home extends React.Component {
               <h5>Popular</h5>
             </div>
             <div className="col-6 text-right">
-              <span>See all</span>
+              <Link to='/popular/movies' className="anchor">See all</Link>
             </div>
           </div>
 

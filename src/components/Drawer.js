@@ -22,7 +22,7 @@ class AppDrawer extends React.Component {
           
           <Menu theme="light" mode="inline">
             <div style={{ marginTop: '20px' }}>
-              <img src='/images/moviedb.svg' width="100%" />
+              <Link to='/'><img src='/images/moviedb.svg' width="100%" /></Link>
             </div>
             <Menu.Item key="1">
               <Link to='/popular/movies'>

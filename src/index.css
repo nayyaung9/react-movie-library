@@ -4,12 +4,19 @@ body {
 a:hover {
   text-decoration: none !important;
 }
+.anchor {
+  color: #000;
+}
 div.scrollmenu {
   display: flex;    
   overflow-x: auto;
   margin: 15px 0;
 }
 
+.cover__image {
+  border-radius: 10px;
+  cursor: pointer;
+}
 div.scrollmenu img {    
   margin: 15px 10px 20px 10px;
   border-radius: 10px;
@@ -70,12 +77,4 @@ div.scrollmenu::-webkit-scrollbar {
   line-height: 34px !important;
   color: #000 !important;
   background-color: #fff !important;
-}
-
-input[type=text] {
-  -webkit-transition: width .35s ea;
-  transition: width .35s ease-in-out;
-}
-input[type=text]:focus {
-  width: 250px;
 }
