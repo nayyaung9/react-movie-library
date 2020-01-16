@@ -1,15 +1,30 @@
-
+body {
+  font-family: 'Lato', sans-serif !important;
+}
+a:hover {
+  text-decoration: none !important;
+}
 div.scrollmenu {
   display: flex;    
   overflow-x: auto;
-  text-align: center;
+  margin: 15px 0;
 }
 
 div.scrollmenu img {    
-  margin: 15px 15px 0 10px;
+  margin: 15px 10px 20px 10px;
   border-radius: 10px;
   cursor: pointer;
   transition: all .2s ease-in-out;
+  /* max-width: 100px; */
+}
+
+@media screen and (max-width: 900px) {
+  div.scrollmenu img {
+    max-width: 120px;  /* for mobile image size */
+  }
+  .container-fluid {
+    padding: 8px !important;
+  }
 }
 div.scrollmenu img:hover {
   transform: scale(1.1);
@@ -19,7 +34,48 @@ div.scrollmenu::-webkit-scrollbar {
   display: none;
 }
 
-.movie_board img {
-  border-radius: 10px;
-  cursor: pointer;
+#components-layout-demo-responsive .logo {
+  height: 32px;
+  background: rgba(255, 255, 255, 0.2);
+  margin: 16px;
+}
+
+.ant-menu {
+  padding: 0 10px !important;
+}
+.ant-menu-item, .ant-menu-submenu-title {
+  border: 1px solid rgba(0, 0, 0, 0.2) !important;
+  border-radius: 20px;
+  margin: 20px 0 !important;
+  padding: 0 10px !important;
+  text-align: center;
+}
+
+.ant-menu:not(.ant-menu-horizontal) .ant-menu-item-selected {
+  background-color: #ffffff !important;
+}
+
+.ant-menu-inline .ant-menu-item::after {
+  border-right: 0px !important;
+}
+
+.ant-layout-sider  {
+  background: #fff !important;
+}
+
+.ant-layout-sider-zero-width-trigger {
+  position: absolute ;
+  top: 8px !important;
+  font-size: 24px !important;
+  line-height: 34px !important;
+  color: #000 !important;
+  background-color: #fff !important;
+}
+
+input[type=text] {
+  -webkit-transition: width .35s ea;
+  transition: width .35s ease-in-out;
+}
+input[type=text]:focus {
+  width: 250px;
 }

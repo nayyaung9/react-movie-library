@@ -5,22 +5,10 @@ import { upcomingActions } from '../actions/upcoming';
 import { nowPlayingActions } from '../actions/nowPlaying';
 import { genresActions } from '../actions/genres';
 
-import { Drawer, Button, Skeleton } from 'antd';
+import { Skeleton, Icon } from 'antd';
+import AppDrawer from './Drawer';
 
 class Home extends React.Component {
-  state = { visible: false };
-
-  showDrawer = () => {
-    this.setState({
-      visible: true,
-    });
-  };
-
-  onClose = () => {
-    this.setState({
-      visible: false,
-    });
-  };
   componentDidMount() {
     this.props.getAllPopularMovies();
     this.props.getAllUpcomingMovies();
@@ -29,49 +17,76 @@ class Home extends React.Component {
   }
   render() {
     return (
-      <div className="container">
-          <Button type="primary" onClick={this.showDrawer}>
-          Open
-        </Button>
-        <Drawer
-          title="Basic Drawer"
-          placement="left"
-          closable={false}
-          onClose={this.onClose}
-          visible={this.state.visible}
-        >
-          {this.props.genres.map((item, index) => {
-            return <p key={index}>{item.name}</p>
-          })}
-        </Drawer>
-        <h5>In Theaters</h5>
-        <div className="scrollmenu">
-          { this.props.nowPlayingLoading 
-            ? <Skeleton avatar active />
-            :this.props.nowPlaying.map((item, index) => {
-            return (
-              <span key={index}>
-                <img src={`https://image.tmdb.org/t/p/w185_and_h278_bestv2/${item.poster_path}`} alt={item.title} />
+      <AppDrawer>
+        <div className="container-fluid" style={{ margin: '20px auto' }}>
+          <div className="row">
+            <div className="col-6">
+              <h3>Movies</h3>
+            </div>
+            <div className="col-6 text-right">
+              <Icon type="search" style={{ fontSize: '20px' }}/>
+            </div>
+          </div>
 
-                <span>{item.title}</span>
-              </span>
-            )
-          })}
+          <h5>In Theaters</h5>
+          <div className="scrollmenu">
+            {this.props.nowPlayingLoading
+              ? <Skeleton avatar active />
+              : this.props.nowPlaying.map((item, index) => {
+                return (
+                  <span key={index}>
+                    <img src={`https://image.tmdb.org/t/p/w185_and_h278_bestv2/${item.poster_path}`} alt={item.title} />
+                    <h6 className="text-center">{item.title}</h6>
+                  </span>
+                )
+              })}
+          </div>
+          <div className="row" style={{ fontWeight: 'bold' }}>
+            <div className="col-6">
+              <h5>Upcoming</h5>
+            </div>
+            <div className="col-6 text-right">
+              <span>See all</span>
+            </div>
+          </div>
+
+          <div className="scrollmenu">
+            {this.props.upcomingLoading
+              ? <Skeleton avatar active paragraph={{ rows: 4 }} />
+              : this.props.upcoming.map((item, index) => {
+                return (
+                  <div key={index}>
+                    <img src={`https://image.tmdb.org/t/p/w185_and_h278_bestv2/${item.poster_path}`} alt={item.title} />
+                    <span>{item.title}</span>
+                  </div>
+                )
+              })}
+          </div>
+
+          <div className="row" style={{ fontWeight: 'bold' }}>
+            <div className="col-6">
+              <h5>Popular</h5>
+            </div>
+            <div className="col-6 text-right">
+              <span>See all</span>
+            </div>
+          </div>
+
+          <div className="scrollmenu">
+            {this.props.upcomingLoading
+              ? <Skeleton avatar active paragraph={{ rows: 4 }} />
+              : this.props.popular.map((item, index) => {
+                return (
+                  <div key={index}>
+                    <img src={`https://image.tmdb.org/t/p/w185_and_h278_bestv2/${item.poster_path}`} alt={item.title} />
+                    <span>{item.title}</span>
+                  </div>
+                )
+              })}
+          </div>
+
         </div>
-        <h5>Upcoming movies</h5>
-        <div className="row movie_board text-center">
-          { this.props.upcomingLoading 
-          ? <Skeleton avatar active paragraph={{ rows: 4 }} />
-          : this.props.popular.map((item, index) => {
-            return (
-              <div className="col-md-3" key={index}>
-                <img src={`https://image.tmdb.org/t/p/w185_and_h278_bestv2/${item.poster_path}`} alt={item.title} />
-                <h4>{item.title}</h4>
-              </div>
-            )
-          })}
-        </div>
-      </div>
+      </AppDrawer>
     )
   }
 }
