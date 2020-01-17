@@ -5,6 +5,7 @@ import { popularActions } from '../actions/popular';
 import { upcomingActions } from '../actions/upcoming';
 import { nowPlayingActions } from '../actions/nowPlaying';
 import { genresActions } from '../actions/genres';
+import { topRatedActions } from '../actions/topRated';
 
 import { Skeleton } from 'antd';
 import { Link } from 'react-router-dom';
@@ -15,6 +16,7 @@ class Home extends React.Component {
     this.props.getAllUpcomingMovies();
     this.props.getNowPlayingMovies();
     this.props.getGenresListType();
+    this.props.getAllTopRatedMovies();
   }
   render() {
     return (
@@ -33,10 +35,10 @@ class Home extends React.Component {
               : this.props.nowPlaying.map((item, index) => {
                 return (
                   <span key={index}>
+                    <Link to={`/now/playing/movie/${item.id}`}>
                     <img src={`https://image.tmdb.org/t/p/w185_and_h278_bestv2/${item.poster_path}`} alt={item.title} />
-                    <h6 className="text-center">
-                      <Link>{item.title}</Link>
-                    </h6>
+                    </Link>
+                    <h6 className="text-center"> {item.title} </h6>
                   </span>
                 )
               })}
@@ -89,6 +91,28 @@ class Home extends React.Component {
               })}
           </div>
 
+          <div className="row" style={{ fontWeight: 'bold' }}>
+            <div className="col-6">
+              <h5>Top rated movies</h5>
+            </div>
+            <div className="col-6 text-right">
+              <Link to='/top_rated/movies' className="anchor">See all</Link>
+            </div>
+          </div>
+
+          <div className="scrollmenu">
+            {this.props.topratedMovies.map((item, index) => {
+                return (
+                  <div key={index}>
+                    <Link to="/#">
+                      <img src={`https://image.tmdb.org/t/p/w185_and_h278_bestv2/${item.poster_path}`} alt={item.title} />
+                    </Link>
+                    <span>{item.title}</span>
+                  </div>
+                )
+              })}
+          </div>
+
         </div>
       </AppDrawer>
     )
@@ -105,6 +129,8 @@ const mapStateToProps = state => {
     nowPlaying: state.nowPlaying.nowplaying,
     nowPlayingLoading: state.nowPlaying.loading,
 
+    topratedMovies: state.toprated.top_rate_movies,
+
     genres: state.genres.genres
   }
 }
@@ -114,7 +140,8 @@ const mapDispatchToProps = dispatch => {
     getAllPopularMovies: () => dispatch(popularActions.getAllPopularMovies()),
     getAllUpcomingMovies: () => dispatch(upcomingActions.getAllUpComingMovies()),
     getNowPlayingMovies: () => dispatch(nowPlayingActions.getNowPlayingMovies()),
-    getGenresListType: () => dispatch(genresActions.getGenresListType())
+    getGenresListType: () => dispatch(genresActions.getGenresListType()),
+    getAllTopRatedMovies: () => dispatch(topRatedActions.getAllTopRatedMovies())
   }
 }
 

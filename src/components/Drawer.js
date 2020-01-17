@@ -70,6 +70,11 @@ class AppDrawer extends React.Component {
                 <span className="nav-text">Now Playing</span>
               </Link>
             </Menu.Item>
+            <Menu.Item key="3">
+              <Link to="/top_rated/movies">
+                <span className="nav-text">Top Rated</span>
+              </Link>
+            </Menu.Item>
             <SubMenu
               key="sub1"
               title={

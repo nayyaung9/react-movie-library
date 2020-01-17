@@ -18,7 +18,7 @@ class Playing extends React.Component {
             {this.props.movies.map((item, index) => {
                 return (
                   <div className="col col-md-3 col-6 cover_image_board" key={index}>
-                    <Link to='/#'>
+                    <Link to={`/now/playing/movie/${item.id}`}>
                       <img src={`https://image.tmdb.org/t/p/w185_and_h278_bestv2/${item.poster_path}`} className="cover__image" alt={item.title} />
                     </Link>
                     <h5>{item.title}</h5>

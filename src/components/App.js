@@ -15,6 +15,7 @@ import TopRated from './topRate/topRated';
 import Latest from './latest/Latest';
 
 import Playing from './Playing/Playing';
+import SinglePlaying from './Playing/SinglePlaying';
 
 import OnTheAir from './tv/OnTheAir';
 
@@ -35,7 +36,8 @@ class App extends React.Component {
 
           <Route path='/latest' component={Latest} />
           
-          <Route path='/now_playing' component={Playing} />
+          <Route path='/now/playing/movies' component={Playing} />
+          <Route path='/now/playing/movie/:id' component={SinglePlaying} />
 
           <Route path='/tv/on_the_air' component={OnTheAir} />
         </Router>

@@ -1,8 +1,9 @@
-import { GET_NOW_PLAYING_MOVIES_REQUEST, GET_NOW_PLAYING_MOVIES_SUCCESS } from '../constants/actionTypes';
+import { GET_NOW_PLAYING_MOVIES_REQUEST, GET_NOW_PLAYING_MOVIES_SUCCESS, GET_NOW_PLAYING_MOVIE_DETAIL_SUCCESS } from '../constants/actionTypes';
 
 const initialState = {
   nowplaying: [],
-  loading: false
+  loading: false,
+  singlePlaying: {}
 }
 
 export default function (state = initialState, action) {
@@ -16,6 +17,11 @@ export default function (state = initialState, action) {
       return {
         ...state,
         nowplaying: action.payload
+      }
+    case GET_NOW_PLAYING_MOVIE_DETAIL_SUCCESS:
+      return {
+        ...state,
+        singlePlaying: action.payload
       }
     default:
       return state;
