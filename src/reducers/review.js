@@ -8,6 +8,7 @@ export default function(state = initialState, action) {
   switch(action.type) {
     case GET_MOVIE_DETAIL_REVIEW:
       return {
+        ...state,
         reviews: action.payload
       }
     default:

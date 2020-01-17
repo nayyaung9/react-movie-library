@@ -13,18 +13,21 @@ class UpComing extends Component {
       <AppDrawer>
         <div className="container">
           <h3>Upcoming movies</h3>
-          <div className="scrollmenu">
+          <div className="row">
+          
+        
+          
             {this.props.upcomingLoading
               ? <Skeleton avatar active paragraph={{ rows: 4 }} />
               : this.props.upcoming.map((item, index) => {
                 return (
-                  <div key={index}>
-                    <img src={`https://image.tmdb.org/t/p/w185_and_h278_bestv2/${item.poster_path}`} alt={item.title} />
-                    <span>{item.title}</span>
+                  <div  className="col-md-3 col-6 cover_image_board" key={index}>
+                    <img src={`https://image.tmdb.org/t/p/w185_and_h278_bestv2/${item.poster_path}`} className="cover__image" alt={item.title} />
+                    <h5>{item.title}</h5>
                   </div>
                 )
               })}
-          </div>
+         </div>
         </div>
       </AppDrawer>
     )

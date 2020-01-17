@@ -6,7 +6,7 @@ import { upcomingActions } from '../actions/upcoming';
 import { nowPlayingActions } from '../actions/nowPlaying';
 import { genresActions } from '../actions/genres';
 
-import { Skeleton, Icon } from 'antd';
+import { Skeleton } from 'antd';
 import { Link } from 'react-router-dom';
 
 class Home extends React.Component {
@@ -25,7 +25,7 @@ class Home extends React.Component {
               <h3>Movies</h3>
             </div>
             <div className="col-6 text-right">
-              <Icon type="search" style={{ fontSize: '20px' }}/>
+              {/* <Icon type="search" style={{ fontSize: '20px' }}/> */}
             </div>
           </div>
 

@@ -1,26 +1,57 @@
 import React from 'react';
-import { Layout, Menu, Icon } from 'antd';
+import { Layout, Menu, Icon, Drawer } from 'antd';
 import { genresActions } from '../actions/genres';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-const { Sider } = Layout;
+import tvList from './TvList';
+const { Header } = Layout;
 const { SubMenu } = Menu;
 
 class AppDrawer extends React.Component {
+  state = { visible: false };
+
+  showDrawer = () => {
+    this.setState({
+      visible: true,
+    });
+  };
+
+  onClose = () => {
+    this.setState({
+      visible: false,
+    });
+  };
   componentDidMount() {
     this.props.getGenresListType();
   }
   render() {
     return (
-      <Layout>
-        <Sider
-          breakpoint="lg"
-          collapsedWidth="0"
-          width="240"
-        >
+      <React.Fragment>
+        <Header style={{ color: 'white' }}>
           <div className="logo" />
-          
-          <Menu theme="dark" mode="inline">
+          <div className="row">
+            <div className="col-2">
+
+              <Icon type="menu" onClick={this.showDrawer} />
+            </div>
+            <div className="col-8 text-center">
+              <Link to='/'>
+                <span className="header_anchor">Movie Database</span>
+              </Link>
+            </div>
+            <div className="col-2 text-right">
+              <Icon type="search" style={{ fontSize: '20px' }} />
+            </div>
+          </div>
+        </Header>
+
+        <Drawer
+          placement="left"
+          closable={false}
+          onClose={this.onClose}
+          visible={this.state.visible}
+        >
+          <Menu theme="light" mode="inline">
             <div style={{ marginTop: '20px' }} className="text-center">
               <Link to='/'><img src='/images/moviedb.svg' width="75%" alt="moviedb" /></Link>
             </div>
@@ -30,7 +61,9 @@ class AppDrawer extends React.Component {
               </Link>
             </Menu.Item>
             <Menu.Item key="2">
-              <span className="nav-text">Upcoming movies</span>
+              <Link to='upcoming/movies'>
+                <span className="nav-text"> Upcoming movies </span>
+              </Link>
             </Menu.Item>
             <Menu.Item key="3">
               <span className="nav-text">movies</span>
@@ -52,14 +85,32 @@ class AppDrawer extends React.Component {
               <Icon type="user" />
               <span className="nav-text">nav 4</span>
             </Menu.Item>
+            <SubMenu
+              key="sub2"
+              title={
+                <span>
+                  <Icon type="user" />
+                  <span>tv</span>
+                </span>
+              }
+            >
+              {tvList.tv.map((item, index) => {
+                return (
+                  <Menu.Item key={index}>
+                    <Link to={item.route}>{item.name}</Link>
+                  </Menu.Item>
+                )
+              })}
+            </SubMenu>
           </Menu>
-        </Sider>
+        </Drawer>
+
         <Layout>
           <div style={{ padding: '24px 10px', background: '#fff', minHeight: 360 }}>
             {this.props.children}
           </div>
         </Layout>
-      </Layout> 
+      </React.Fragment>
     )
   }
 }

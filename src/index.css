@@ -7,6 +7,10 @@ a:hover {
 .anchor {
   color: #000;
 }
+.header_anchor {
+  color: #fff;
+  cursor: pointer;
+}
 div.scrollmenu {
   display: flex;    
   overflow-x: auto;
@@ -17,6 +21,7 @@ div.scrollmenu {
   border-radius: 10px;
   cursor: pointer;
 }
+
 div.scrollmenu img {    
   margin: 15px 10px 20px 10px;
   border-radius: 10px;
@@ -24,13 +29,21 @@ div.scrollmenu img {
   transition: all .2s ease-in-out;
   /* max-width: 100px; */
 }
-
+.ant-layout-header {
+  line-height: 58px !important;
+}
 @media screen and (max-width: 900px) {
   div.scrollmenu img {
     max-width: 120px;  /* for mobile image size */
   }
   .container-fluid {
     padding: 8px !important;
+  }
+  .cover_image_board {
+    text-align: center;
+  }
+  .ant-layout-header {
+    padding: 0 30px !important; 
   }
 }
 div.scrollmenu img:hover {
@@ -45,6 +58,12 @@ div.scrollmenu::-webkit-scrollbar {
   height: 32px;
   background: rgba(255, 255, 255, 0.2);
   margin: 16px;
+}
+.ant-menu-inline {
+  border: 0 !important;
+}
+.ant-drawer-body  {
+  padding: 0 !important;
 }
 
 /* .ant-menu {

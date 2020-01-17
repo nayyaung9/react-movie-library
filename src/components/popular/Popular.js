@@ -13,21 +13,22 @@ class Popular extends Component {
     return (
       <AppDrawer>
         <div className="container">
-         <div className="scrollmenu">
+          <h5>Popular movies</h5>
+          <div className="row">
             {this.props.upcomingLoading
               ? <Skeleton avatar active paragraph={{ rows: 4 }} />
               : this.props.popular.map((item, index) => {
                 return (
-                  <div key={index}>
+                  <div className="col-md-3 col-6 cover_image_board" key={index}>
                     <Link to={`/popular/movie/${item.id}`}>
-                      <img src={`https://image.tmdb.org/t/p/w185_and_h278_bestv2/${item.poster_path}`} alt={item.title} />
+                      <img src={`https://image.tmdb.org/t/p/w185_and_h278_bestv2/${item.poster_path}`} className="cover__image" alt={item.title} />
                     </Link>
-                    <span>{item.title}</span>
+                    <h5>{item.title}</h5>
                   </div>
                 )
               })}
           </div>
-          </div>
+        </div>
       </AppDrawer>
     )
   }

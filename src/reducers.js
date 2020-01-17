@@ -5,6 +5,7 @@ import nowPlaying from './reducers/nowPlaying';
 import genres from './reducers/genres';
 import similar from './reducers/similar';
 import reviews from './reducers/review';
+import TvOntheair from './reducers/onTheAir';
 
 export default combineReducers({
   popularMovies: popular,
@@ -12,5 +13,6 @@ export default combineReducers({
   nowPlaying,
   genres,
   similarMovies: similar,
-  reviews
+  reviews,
+  TvOntheair
 })

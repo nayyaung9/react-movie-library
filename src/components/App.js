@@ -8,6 +8,8 @@ import Popular from './popular/Popular';
 import PopularDetail from './popular/PopularDetail';
 import Upcoming from './upcoming/Upcoming';
 
+import OnTheAir from './tv/OnTheAir';
+
 class App extends React.Component {
   render() {
     return (
@@ -18,6 +20,8 @@ class App extends React.Component {
           <Route path='/popular/movies' component={Popular} />
           <Route path='/popular/movie/:id' component={PopularDetail} />
           <Route path='/upcoming/movies' component={Upcoming} />
+
+          <Route path='/tv/on_the_air' component={OnTheAir} />
         </Router>
       </div>
     )
