@@ -8,7 +8,7 @@ a:hover {
   color: #000;
 }
 .header_anchor {
-  color: #fff;
+  color: #000;
   cursor: pointer;
 }
 div.scrollmenu {
@@ -78,7 +78,9 @@ div.scrollmenu::-webkit-scrollbar {
   padding: 8px !important;
   font-size: 15px !important;
 }
-
+.ant-layout-header {
+  background-color: #fff !important;
+}
 /* .ant-menu {
   padding: 0 10px !important;
 }

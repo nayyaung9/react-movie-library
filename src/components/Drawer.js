@@ -27,7 +27,7 @@ class AppDrawer extends React.Component {
   render() {
     return (
       <React.Fragment>
-        <Header style={{ color: 'white' }}>
+        <Header style={{ color: 'black' }}>
           <div className="logo" />
           <div className="row">
             <div className="col-2">
@@ -108,7 +108,7 @@ class AppDrawer extends React.Component {
         </Drawer>
 
         <Layout>
-          <div style={{ padding: '24px 10px', background: '#fff', minHeight: 360 }}>
+          <div style={{ background: '#fff', minHeight: 360 }}>
             {this.props.children}
           </div>
         </Layout>

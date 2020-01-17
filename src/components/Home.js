@@ -35,7 +35,7 @@ class Home extends React.Component {
                   <span key={index}>
                     <img src={`https://image.tmdb.org/t/p/w185_and_h278_bestv2/${item.poster_path}`} alt={item.title} />
                     <h6 className="text-center">
-                      <Link to={item.id}>{item.title}</Link>
+                      <Link>{item.title}</Link>
                     </h6>
                   </span>
                 )
