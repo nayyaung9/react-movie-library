@@ -5,9 +5,11 @@ import { popularActions } from '../../actions/popular';
 import { similarActions } from '../../actions/similar';
 import { reviewActions } from '../../actions/review';
 import { creditActions } from '../../actions/credits';
+import { videoActions } from '../../actions/videos';
 import { connect } from 'react-redux';
 
-import { Avatar, Divider, Comment, Skeleton, Tag, Icon } from 'antd';
+import { Avatar, Divider, Comment, Skeleton, Tag, Icon, Rate } from 'antd';
+import moment from 'moment';
 
 const formatter = new Intl.NumberFormat('en-US', {
   style: 'currency',
@@ -26,48 +28,111 @@ const timeConvert = n => {
 
 class PopularDetail extends Component {
   componentDidMount() {
-    const { match: { params: { id } }} = this.props;
+    const { match: { params: { id } } } = this.props;
     this.props.getPopularMovieDetail(id);
     this.props.getAllSimilarMovies(id);
     this.props.getMovieDetailReviews(id);
     this.props.getMovieDetailCrews(id);
+    this.props.getMovieDetailVideos(id)
   }
 
   render() {
-    const { movie } = this.props;
+    const { movie, videos } = this.props;
     return (
       <AppDrawer>
         <div className="board"
           style={{
             backgroundImage: `url(https://image.tmdb.org/t/p/w533_and_h300_bestv2/${movie.backdrop_path})`,
             backgroundSize: 'cover',
-            backgroundPosition: 'top center',
-            padding: '20px'
           }}
         >
-          <div className="container mt-4">
-            <div className="board_data" style={{ paddingTop: '15px' }}>
-              <div className="row">
-                <div className="col-md-4 text-right">
-                  <img src={`https://image.tmdb.org/t/p/w300_and_h450_bestv2/${movie.poster_path}`} alt={movie.title} className="cover__image" />
-                </div>
-                <div className="col-md-8 text-left">
-                  <h3 className="text-white">{movie.title}</h3>
-                  <div className="overview mt-4">
-                    <h4 className="text-white">Overview</h4>
-                    <p className="text-white">{movie.overview}</p>
-                    <Tag color="gold"> <Icon type="dollar" /> {formatter.format(movie.budget)} </Tag>
-                    <br />
-                    <Icon type="clock-circle" /> {timeConvert(movie.runtime)}
+          <div className="board_border">
+            <div className="container">
+              <div className="board_data">
+                <div className="row">
+                  <div className="col-md-4 text-center">
+                    <img src={`https://image.tmdb.org/t/p/w185_and_h278_bestv2/${movie.poster_path}`} alt={movie.title} className="detail_image" />
+                  </div>
+                  <div className="col-md-8 movie_data">
+                    <h4 className="movie_title">{movie.title}</h4>
+                    
+                    <div className="overview mt-4">
+                      <h5 className="text-white">Overview</h5>
+                      <p className="text-white">{movie.overview} <br />
+                      <span></span>
+                      <Rate disabled defaultValue={movie.vote_average / 2} />
+                      </p>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
-        
-        {/* Similar movies */}
+
+
         <div className="container">
+          {/* Top Billed Cast */}
+          <div className="row mt-5">
+            <div className="col-md-8">
+              <h3>Top Billed Cast</h3>
+              <div className="scrollmenu text-center">
+                {this.props.casts.length
+                  ? this.props.casts.map((item, index) => {
+                    return (
+                      <div key={index}>
+                        <img src={`
+                          ${
+                          item.profile_path !== null
+                            ? `https://image.tmdb.org/t/p/w138_and_h175_face/${item.profile_path}`
+                            : `/images/default_user.png`
+                          }
+                        `} alt={item.title} />
+                        <h6>{item.name}</h6>
+                        <span className="lighter">{item.character}</span>
+                      </div>
+                    )
+                  })
+                  : <span>No similar movies</span>
+                }
+              </div>
+            </div>
+
+            <div className="col-md-4" style={{ paddingTop: '10px' }}>
+              <div className="status mb-2">
+                <h6>Status</h6>
+                <span className="text-secondary">{movie.status}</span>
+              </div>
+              <div className="duration mb-2">
+                <span>Duration: <span className="text-secondary">{timeConvert(movie.runtime)}</span></span>
+              </div>
+              <div className="released_date mb-2">
+                <span>Released date: 
+                  <span className="text-secondary">
+                    {moment(movie.release_date).format("DD MMM YY")}
+                  </span>
+                </span>
+              </div>
+              <div className="budget mt-2">
+              <span>Budget: <span className="text-secondary">{formatter.format(movie.budget)}</span></span>
+              </div>
+              <div className="languages mt-2">
+                <h6>Languages</h6>
+                {movie.spoken_languages && movie.spoken_languages.map((text, index) => {
+                  return <Tag key={index}>{text.name}</Tag>
+                })}
+              </div>
+              <div className="genres mt-2">
+                <h6>Genres</h6>
+                {movie.genres && movie.genres.map((item, index) => {
+                  return <Tag color="orange" key={index}>{item.name}</Tag>
+                })}
+              </div>     
+            </div>
+          </div>
+          <Divider />
+
+          {/* Similar movies */}
           {this.props.loading
             ? <Skeleton avatar active paragraph={{ rows: 5 }} />
             : (
@@ -92,42 +157,27 @@ class PopularDetail extends Component {
 
           <Divider />
 
-          {/* Top Billed Cast */}
-          <div className="row">
-            <div className="col-md-8">
-              <h3>Top Billed Cast</h3>
+          {/* videos */}
+          <h3>Trailers</h3>
+          {this.props.videosLoading
+            ? <Skeleton active avatar paragraph={{ rows: 4 }} />
+            : (
               <div className="scrollmenu">
-                {this.props.casts.length
-                  ? this.props.casts.map((item, index) => {
-                    return (
-                      <div key={index}>
-                        <img src={`
-                          ${
-                            item.profile_path !== null
-                            ? `https://image.tmdb.org/t/p/w138_and_h175_face/${item.profile_path}`
-                            : `/images/default_user.png`
-                          }
-                        `} alt={item.title} />
-                        <span>{item.name}</span>
-                      </div>
-                    )
-                  })
-                  : <span>No similar movies</span>
-                }
-              </div>
-            </div>
-
-            <div className="col-md-4">
-              <div className="genres">
-                <h4>Genres</h4>
-                {movie.genres && movie.genres.map((item, index) => {
-                  return <Tag key={index}>{item.name}</Tag>
+                {videos && videos.map((item, index) => {
+                  return (
+                    <iframe width="560" height="315" key={index}
+                      src={`https://www.youtube.com/embed/${item.key}`}
+                      title={item.key}
+                      frameBorder="0"
+                      allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                      allowFullScreen>
+                    </iframe>
+                  )
                 })}
               </div>
-            </div>
-          </div>
+            )
+          }
 
-          <Divider />
 
           {/* Reviews */}
           {this.props.loading
@@ -144,7 +194,7 @@ class PopularDetail extends Component {
                         avatar={
                           <Avatar
                             src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png"
-                            alt="Han Solo"
+                            alt={item.author}
                           />
                         }
                         content={
@@ -165,13 +215,15 @@ class PopularDetail extends Component {
 }
 
 const mapStateToProps = state => {
-  const { popularMovies, similarMovies, reviews, credits } = state;
+  const { popularMovies, similarMovies, reviews, credits, videos } = state;
   return {
     movie: popularMovies.singlePopular,
     similarMovies: similarMovies.similar,
     reviews: reviews.reviews,
     loading: popularMovies.loading,
-    casts: credits.casts
+    casts: credits.casts,
+    videos: videos.videos,
+    videosLoading: videos.loading
   }
 }
 const mapDispatchToProps = dispatch => {
@@ -179,7 +231,8 @@ const mapDispatchToProps = dispatch => {
     getPopularMovieDetail: data => dispatch(popularActions.getPopularMovieDetail(data)),
     getAllSimilarMovies: data => dispatch(similarActions.getAllSimilarMovies(data)),
     getMovieDetailReviews: data => dispatch(reviewActions.getMovieDetailReview(data)),
-    getMovieDetailCrews: data => dispatch(creditActions.getMovieDetailCrews(data))
+    getMovieDetailCrews: data => dispatch(creditActions.getMovieDetailCrews(data)),
+    getMovieDetailVideos: data => dispatch(videoActions.getMovieDetailVideos(data))
   }
 }
 export default connect(

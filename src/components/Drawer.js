@@ -107,10 +107,10 @@ class AppDrawer extends React.Component {
           </Menu>
         </Drawer>
 
-        <Layout>
-          <div style={{ background: '#fff', minHeight: 360 }}>
+        <Layout style={{ background: '#fff' }}>
+         
             {this.props.children}
-          </div>
+        
         </Layout>
       </React.Fragment>
     )

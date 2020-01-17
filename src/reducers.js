@@ -7,6 +7,7 @@ import similar from './reducers/similar';
 import credits from './reducers/credits';
 import reviews from './reducers/review';
 import TvOntheair from './reducers/onTheAir';
+import videos from './reducers/videos';
 
 export default combineReducers({
   popularMovies: popular,
@@ -16,5 +17,6 @@ export default combineReducers({
   similarMovies: similar,
   credits,
   reviews,
+  videos,
   TvOntheair
 })

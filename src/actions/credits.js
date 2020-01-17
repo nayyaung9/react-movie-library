@@ -3,7 +3,6 @@ import { GET_MOVIE_DETAIL_CREDIT_SUCCESS } from '../constants/actionTypes';
 
 function getMovieDetailCrews(data) {
   function success(casts, crews) {
-    console.log(casts, crews)
     return { type: GET_MOVIE_DETAIL_CREDIT_SUCCESS, casts, crews }
   }
   return dispatch => {

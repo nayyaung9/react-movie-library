@@ -20,7 +20,10 @@ div.scrollmenu {
 .cover__image {
   border-radius: 10px;
   cursor: pointer;
- 
+}
+.detail_image {
+  border-radius: 10px;
+  cursor: pointer;
 }
 
 div.scrollmenu img {    
@@ -33,12 +36,27 @@ div.scrollmenu img {
 .ant-layout-header {
   line-height: 58px !important;
 }
+.movie_title {
+  color: #fff;
+}
 @media screen and (max-width: 900px) {
   div.scrollmenu img {
     max-width: 120px;  /* for mobile image size */
   }
+  .movie_data {
+    margin-top: 10px;
+  }
+  .movie_title {
+    text-align: center;
+  }
   .container-fluid {
     padding: 8px !important;
+  }
+  .detail_image {
+    width: 60%;
+  }
+  .overview > h5 {
+    text-align: center;
   }
   .cover__image {
     width: 100%;
@@ -77,10 +95,22 @@ div.scrollmenu::-webkit-scrollbar {
 .ant-tag {
   padding: 8px !important;
   font-size: 15px !important;
+  margin: 0 8px 8px 0 !important;
 }
 .ant-layout-header {
   background-color: #fff !important;
 }
+.lighter {
+  color: rgb(163, 161, 161) !important;
+  font-size: 14px;
+}
+.board_border {
+  background-color: rgba(32, 32, 31, 0.7);
+}
+.board_data {
+  padding: 40px;
+}
+
 /* .ant-menu {
   padding: 0 10px !important;
 }
