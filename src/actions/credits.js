@@ -7,7 +7,7 @@ function getMovieDetailCrews(data) {
     return { type: GET_MOVIE_DETAIL_CREDIT_SUCCESS, casts, crews }
   }
   return dispatch => {
-    movie.get(`/movie/${data.id}/credits?api_key=${process.env.REACT_APP_API_KEY}`)
+    movie.get(`/movie/${data}/credits?api_key=${process.env.REACT_APP_API_KEY}`)
     .then(
       payload => {
         dispatch(success(payload.data.cast, payload.data.crew))

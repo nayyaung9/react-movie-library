@@ -26,7 +26,7 @@ function getPopularMovieDetail(data) {
   }
   return dispatch => {
     dispatch(request(true))
-    api.get(`/movie/${data.id}?api_key=${process.env.REACT_APP_API_KEY}&language=en-US`)
+    api.get(`/movie/${data}?api_key=${process.env.REACT_APP_API_KEY}&language=en-US`)
     .then(
       payload => {
         dispatch(success(payload.data))

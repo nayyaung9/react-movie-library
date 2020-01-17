@@ -6,7 +6,7 @@ function getMovieDetailReview(data) {
     return { type: GET_MOVIE_DETAIL_REVIEW, payload }
   }
   return dispatch => {
-    api.get(`/movie/${data.id}/reviews?api_key=${process.env.REACT_APP_API_KEY}`)
+    api.get(`/movie/${data}/reviews?api_key=${process.env.REACT_APP_API_KEY}`)
     .then(
       payload => dispatch(success(payload.data.results))
     )

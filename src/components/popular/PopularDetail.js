@@ -26,18 +26,11 @@ const timeConvert = n => {
 
 class PopularDetail extends Component {
   componentDidMount() {
-    this.props.getPopularMovieDetail({
-      id: this.props.match.params.id
-    });
-    this.props.getAllSimilarMovies({
-      id: this.props.match.params.id
-    });
-    this.props.getMovieDetailReviews({
-      id: this.props.match.params.id
-    });
-    this.props.getMovieDetailCrews({
-      id: this.props.match.params.id
-    })
+    const { match: { params: { id } }} = this.props;
+    this.props.getPopularMovieDetail(id);
+    this.props.getAllSimilarMovies(id);
+    this.props.getMovieDetailReviews(id);
+    this.props.getMovieDetailCrews(id);
   }
 
   render() {
@@ -52,7 +45,6 @@ class PopularDetail extends Component {
             padding: '20px'
           }}
         >
-
           <div className="container mt-4">
             <div className="board_data" style={{ paddingTop: '15px' }}>
               <div className="row">

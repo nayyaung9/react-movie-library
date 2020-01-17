@@ -6,7 +6,7 @@ function getAllSimilarMovies(data) {
     return { type: GET_SIMILAR_MOVIE_REQUEST, payload }
   }
   return dispatch => {
-    api.get(`movie/${data.id}/similar?api_key=${process.env.REACT_APP_API_KEY}`)
+    api.get(`movie/${data}/similar?api_key=${process.env.REACT_APP_API_KEY}`)
     .then(
       payload => {
         dispatch(success(payload.data.results))
