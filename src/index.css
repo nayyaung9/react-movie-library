@@ -20,6 +20,7 @@ div.scrollmenu {
 .cover__image {
   border-radius: 10px;
   cursor: pointer;
+ 
 }
 
 div.scrollmenu img {    
@@ -39,11 +40,19 @@ div.scrollmenu img {
   .container-fluid {
     padding: 8px !important;
   }
+  .cover__image {
+    width: 100%;
+  }
   .cover_image_board {
     text-align: center;
   }
   .ant-layout-header {
     padding: 0 30px !important; 
+  }
+}
+@media screen and (min-width: 900px) {
+  .cover__image {
+    width: 80%;
   }
 }
 div.scrollmenu img:hover {
@@ -64,6 +73,10 @@ div.scrollmenu::-webkit-scrollbar {
 }
 .ant-drawer-body  {
   padding: 0 !important;
+}
+.ant-tag {
+  padding: 8px !important;
+  font-size: 15px !important;
 }
 
 /* .ant-menu {

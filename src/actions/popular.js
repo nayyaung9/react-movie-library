@@ -1,5 +1,5 @@
 import api from '../api';
-import { POPULAR_MOVIES_REQUEST, POPULAR_MOVIE_DETAIL_REQUEST } from '../constants/actionTypes';
+import { POPULAR_MOVIES_REQUEST, POPULAR_MOVIE_DETAIL_REQUEST, POPULAR_MOVIE_DETAIL_SUCCESS } from '../constants/actionTypes';
 
 function getAllPopularMovies() {
   function success(payload) {
@@ -21,11 +21,16 @@ function getPopularMovieDetail(data) {
   function request(loading) {
     return { type: POPULAR_MOVIE_DETAIL_REQUEST, payload: loading }
   }
+  function success(payload) {
+    return { type: POPULAR_MOVIE_DETAIL_SUCCESS, payload }
+  }
   return dispatch => {
+    dispatch(request(true))
     api.get(`/movie/${data.id}?api_key=${process.env.REACT_APP_API_KEY}&language=en-US`)
     .then(
       payload => {
-        dispatch(request(payload.data))
+        dispatch(success(payload.data))
+        dispatch(request(false))
       }
     )
   }

@@ -24,9 +24,6 @@ class Home extends React.Component {
             <div className="col-6">
               <h3>Movies</h3>
             </div>
-            <div className="col-6 text-right">
-              {/* <Icon type="search" style={{ fontSize: '20px' }}/> */}
-            </div>
           </div>
 
           <h5>In Theaters</h5>
@@ -37,7 +34,9 @@ class Home extends React.Component {
                 return (
                   <span key={index}>
                     <img src={`https://image.tmdb.org/t/p/w185_and_h278_bestv2/${item.poster_path}`} alt={item.title} />
-                    <h6 className="text-center">{item.title}</h6>
+                    <h6 className="text-center">
+                      <Link to={item.id}>{item.title}</Link>
+                    </h6>
                   </span>
                 )
               })}

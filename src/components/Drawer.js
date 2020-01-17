@@ -57,16 +57,18 @@ class AppDrawer extends React.Component {
             </div>
             <Menu.Item key="1">
               <Link to='/popular/movies'>
-                <span className="nav-text">popular movies</span>
+                <span className="nav-text">Popular Movies</span>
               </Link>
             </Menu.Item>
             <Menu.Item key="2">
-              <Link to='upcoming/movies'>
-                <span className="nav-text"> Upcoming movies </span>
+              <Link to='/upcoming/movies'>
+                <span className="nav-text"> Upcoming Movies </span>
               </Link>
             </Menu.Item>
             <Menu.Item key="3">
-              <span className="nav-text">movies</span>
+              <Link to="/now_playing">
+                <span className="nav-text">Now Playing</span>
+              </Link>
             </Menu.Item>
             <SubMenu
               key="sub1"
