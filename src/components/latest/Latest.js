@@ -1,6 +1,6 @@
 import React from 'react';
 import AppDrawer from '../Drawer';
-import { latestActions } from '../../actions/latest';
+import { latestActions } from '../../actions/movies/latest';
 import { connect } from 'react-redux';
 
 class Latest extends React.Component {

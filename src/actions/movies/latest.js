@@ -1,5 +1,5 @@
-import movie from '../api';
-import { GET_MOVIE_LATEST_REQUEST } from '../constants/actionTypes';
+import movie from '../../api';
+import { GET_MOVIE_LATEST_REQUEST } from '../../constants/actionTypes';
 
 function getMovieLatest() {
   function request(payload) {

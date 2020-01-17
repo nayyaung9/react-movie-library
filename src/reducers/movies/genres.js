@@ -1,4 +1,4 @@
-import { GET_GENRE_TYPE_LIST_REQUEST } from '../constants/actionTypes';
+import { GET_GENRE_TYPE_LIST_REQUEST } from '../../constants/actionTypes';
 
 const initialState = {
   genres: []

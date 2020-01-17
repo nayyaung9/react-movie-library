@@ -1,5 +1,5 @@
-import api from '../api';
-import { POPULAR_MOVIES_REQUEST, POPULAR_MOVIE_DETAIL_REQUEST, POPULAR_MOVIE_DETAIL_SUCCESS } from '../constants/actionTypes';
+import api from '../../api';
+import { POPULAR_MOVIES_REQUEST, POPULAR_MOVIE_DETAIL_REQUEST, POPULAR_MOVIE_DETAIL_SUCCESS } from '../../constants/actionTypes';
 
 function getAllPopularMovies() {
   function success(payload) {

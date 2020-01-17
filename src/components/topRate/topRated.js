@@ -1,6 +1,6 @@
 import React from 'react';
 import AppDrawer from '../Drawer';
-import { topRatedActions } from '../../actions/topRated';
+import { topRatedActions } from '../../actions/movies/topRated';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 

@@ -18,6 +18,7 @@ import Playing from './Playing/Playing';
 import SinglePlaying from './Playing/SinglePlaying';
 
 import OnTheAir from './tv/OnTheAir';
+import OnTheAirDetail from './tv/OnTheAirDetail';
 
 class App extends React.Component {
   render() {
@@ -39,7 +40,8 @@ class App extends React.Component {
           <Route path='/now/playing/movies' component={Playing} />
           <Route path='/now/playing/movie/:id' component={SinglePlaying} />
 
-          <Route path='/tv/on_the_air' component={OnTheAir} />
+          <Route path='/tv/channels/on_the_air' component={OnTheAir} />
+          <Route path='/tv/channel/on_the_air/:id' component={OnTheAirDetail} />
         </Router>
       </div>
     )

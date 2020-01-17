@@ -1,5 +1,5 @@
-import movie from '../api';
-import { GET_TOP_RATED_MOVIE_SUCCESS } from '../constants/actionTypes';
+import movie from '../../api';
+import { GET_TOP_RATED_MOVIE_SUCCESS } from '../../constants/actionTypes';
 
 function getAllTopRatedMovies() {
   function success(payload) {

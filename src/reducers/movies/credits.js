@@ -1,4 +1,4 @@
-import { GET_MOVIE_DETAIL_CREDIT_SUCCESS } from '../constants/actionTypes';
+import { GET_MOVIE_DETAIL_CREDIT_SUCCESS } from '../../constants/actionTypes';
 
 const initialState = {
   casts: [],

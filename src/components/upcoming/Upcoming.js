@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import AppDrawer from './../Drawer';
-import { upcomingActions } from '../../actions/upcoming';
+import { upcomingActions } from '../../actions/movies/upcoming';
 import { connect } from 'react-redux'
 
 import { Skeleton } from 'antd';

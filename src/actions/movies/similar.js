@@ -1,5 +1,5 @@
-import api from '../api';
-import { GET_SIMILAR_MOVIE_REQUEST } from '../constants/actionTypes';
+import api from '../../api';
+import { GET_SIMILAR_MOVIE_REQUEST } from '../../constants/actionTypes';
 
 function getAllSimilarMovies(data) {
   function success(payload) {

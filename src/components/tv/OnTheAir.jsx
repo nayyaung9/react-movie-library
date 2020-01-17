@@ -1,6 +1,6 @@
 import React from 'react';
 import AppDrawer from '../Drawer';
-import { tvOntheAirActions } from '../../actions/tvOnTheAir';
+import { tvOntheAirActions } from '../../actions/tv/tvOnTheAir';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
@@ -17,7 +17,7 @@ class OnTheAir extends React.Component {
             {this.props.onTheAirTv.map((item, index) => {
               return (
                 <div className="col-md-3 col-6 cover_image_board" key={index}>
-                  <Link to={`/popular/movie/${item.id}`}>
+                  <Link to={`/tv/channel/on_the_air/${item.id}`}>
                     <img src={`https://image.tmdb.org/t/p/w185_and_h278_bestv2/${item.poster_path}`} className="cover__image" alt={item.title} />
                   </Link>
                   <h5>{item.original_name}</h5>

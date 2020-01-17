@@ -3,7 +3,7 @@ export default {
     {
       key: 1,
       name: 'On the air',
-      route: '/tv/on_the_air'
+      route: '/tv/channels/on_the_air'
     },
     {
       key: 2,

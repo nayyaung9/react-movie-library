@@ -1,4 +1,4 @@
-import { POPULAR_MOVIES_REQUEST, POPULAR_MOVIE_DETAIL_REQUEST, POPULAR_MOVIE_DETAIL_SUCCESS } from '../constants/actionTypes';
+import { POPULAR_MOVIES_REQUEST, POPULAR_MOVIE_DETAIL_REQUEST, POPULAR_MOVIE_DETAIL_SUCCESS } from '../../constants/actionTypes';
 
 const initialState = {
   popular: [],

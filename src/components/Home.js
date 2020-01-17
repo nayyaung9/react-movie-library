@@ -1,11 +1,11 @@
 import React from 'react';
 import AppDrawer from './Drawer';
 import { connect } from 'react-redux';
-import { popularActions } from '../actions/popular';
-import { upcomingActions } from '../actions/upcoming';
-import { nowPlayingActions } from '../actions/nowPlaying';
-import { genresActions } from '../actions/genres';
-import { topRatedActions } from '../actions/topRated';
+import { popularActions } from '../actions/movies/popular';
+import { upcomingActions } from '../actions/movies/upcoming';
+import { nowPlayingActions } from '../actions/movies/nowPlaying';
+import { genresActions } from '../actions/movies/genres';
+import { topRatedActions } from '../actions/movies/topRated';
 
 import { Skeleton } from 'antd';
 import { Link } from 'react-router-dom';

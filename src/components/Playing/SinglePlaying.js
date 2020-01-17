@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import AppDrawer from './../Drawer';
 
-import { upcomingActions } from '../../actions/movies/upcoming';
+import { nowPlayingActions } from '../../actions/movies/nowPlaying';
 import { similarActions } from '../../actions/movies/similar';
 import { reviewActions } from '../../actions/movies/review';
 import { creditActions } from '../../actions/movies/credits';
@@ -26,10 +26,10 @@ const timeConvert = n => {
   return `${rhours}h ${rminutes}mm`;
 }
 
-class UpComingDetail extends Component {
+class SinglePlaying extends Component {
   componentDidMount() {
     const { match: { params: { id } } } = this.props;
-    this.props.getUpcomingMovieDetail(id);
+    this.props.getNowPlayingMovieDetail(id);
     this.props.getAllSimilarMovies(id);
     this.props.getMovieDetailReviews(id);
     this.props.getMovieDetailCrews(id);
@@ -38,7 +38,6 @@ class UpComingDetail extends Component {
 
   render() {
     const { movie, videos } = this.props;
-    const vote = movie.vote_average / 2;
     return (
       <AppDrawer>
         <div className="board"
@@ -56,10 +55,11 @@ class UpComingDetail extends Component {
                   </div>
                   <div className="col-md-8 movie_data">
                     <h4 className="movie_title">{movie.title}</h4>
+
                     <div className="overview mt-4">
                       <h5 className="text-white">Overview</h5>
-                      <p className="text-white">{movie.overview}</p>
-                      <Rate disabled defaultValue={vote} />
+                      <p className="text-white">{movie.overview} </p>
+                      <Rate disabled defaultValue={movie.vote_average / 2} />
                     </div>
                   </div>
                 </div>
@@ -67,6 +67,7 @@ class UpComingDetail extends Component {
             </div>
           </div>
         </div>
+
 
         <div className="container">
           {/* Top Billed Cast */}
@@ -212,12 +213,11 @@ class UpComingDetail extends Component {
 }
 
 const mapStateToProps = state => {
-  const { upcomingMovies, similarMovies, reviews, credits, videos } = state;
+  const { nowPlaying, similarMovies, reviews, credits, videos } = state;
   return {
-    movie: upcomingMovies.singleUpcoming,
+    movie: nowPlaying.singlePlaying,
     similarMovies: similarMovies.similar,
     reviews: reviews.reviews,
-    loading: upcomingMovies.loading,
     casts: credits.casts,
     videos: videos.videos,
     videosLoading: videos.loading
@@ -225,7 +225,7 @@ const mapStateToProps = state => {
 }
 const mapDispatchToProps = dispatch => {
   return {
-    getUpcomingMovieDetail: data => dispatch(upcomingActions.getUpcomingMovieDetail(data)),
+    getNowPlayingMovieDetail: data => dispatch(nowPlayingActions.getNowPlayingMovieDetail(data)),
     getAllSimilarMovies: data => dispatch(similarActions.getAllSimilarMovies(data)),
     getMovieDetailReviews: data => dispatch(reviewActions.getMovieDetailReview(data)),
     getMovieDetailCrews: data => dispatch(creditActions.getMovieDetailCrews(data)),
@@ -235,4 +235,4 @@ const mapDispatchToProps = dispatch => {
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(UpComingDetail);
+)(SinglePlaying);

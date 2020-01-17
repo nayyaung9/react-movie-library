@@ -1,5 +1,5 @@
-import movie from '../api';
-import { GET_NOW_PLAYING_MOVIES_REQUEST, GET_NOW_PLAYING_MOVIES_SUCCESS, GET_NOW_PLAYING_MOVIE_DETAIL_SUCCESS } from '../constants/actionTypes';
+import movie from '../../api';
+import { GET_NOW_PLAYING_MOVIES_REQUEST, GET_NOW_PLAYING_MOVIES_SUCCESS, GET_NOW_PLAYING_MOVIE_DETAIL_SUCCESS } from '../../constants/actionTypes';
 
 function getNowPlayingMovies() {
   function success(payload) {

@@ -1,4 +1,4 @@
-import { GET_SIMILAR_MOVIE_REQUEST } from '../constants/actionTypes';
+import { GET_SIMILAR_MOVIE_REQUEST } from '../../constants/actionTypes';
 
 const initialState = {
   similar: []

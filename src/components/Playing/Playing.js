@@ -1,7 +1,7 @@
 import React from 'react';
 import AppDrawer from '../Drawer';
 
-import { nowPlayingActions } from '../../actions/nowPlaying';
+import { nowPlayingActions } from '../../actions/movies/nowPlaying';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 

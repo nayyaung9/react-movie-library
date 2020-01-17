@@ -1,4 +1,4 @@
-import { GET_MOVIE_DETAIL_VIDEO_REQUEST, GET_MOVIE_DETAIL_VIDEO_SUCCESS } from '../constants/actionTypes';
+import { GET_MOVIE_DETAIL_VIDEO_REQUEST, GET_MOVIE_DETAIL_VIDEO_SUCCESS } from '../../constants/actionTypes';
 
 const initialState = {
   loading: false,

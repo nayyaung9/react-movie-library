@@ -1,5 +1,5 @@
-import movie from '../api';
-import { GET_MOVIE_DETAIL_VIDEO_SUCCESS, GET_MOVIE_DETAIL_VIDEO_REQUEST } from '../constants/actionTypes';
+import movie from '../../api';
+import { GET_MOVIE_DETAIL_VIDEO_SUCCESS, GET_MOVIE_DETAIL_VIDEO_REQUEST } from '../../constants/actionTypes';
 
 function getMovieDetailVideos(data) {
   function success(payload) {

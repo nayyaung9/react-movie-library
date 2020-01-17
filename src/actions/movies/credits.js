@@ -1,5 +1,5 @@
-import movie from '../api';
-import { GET_MOVIE_DETAIL_CREDIT_SUCCESS } from '../constants/actionTypes';
+import movie from '../../api';
+import { GET_MOVIE_DETAIL_CREDIT_SUCCESS } from '../../constants/actionTypes';
 
 function getMovieDetailCrews(data) {
   function success(casts, crews) {

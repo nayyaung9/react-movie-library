@@ -1,4 +1,4 @@
-import { UPCOMING_MOVIES_REQUEST, UPCOMING_MOVIES_SUCCESS, UPCOMING_MOVIE_DETAIL_REQUEST } from '../constants/actionTypes';
+import { UPCOMING_MOVIES_REQUEST, UPCOMING_MOVIES_SUCCESS, UPCOMING_MOVIE_DETAIL_REQUEST } from '../../constants/actionTypes';
 
 const initialState = {
   upcoming: [],

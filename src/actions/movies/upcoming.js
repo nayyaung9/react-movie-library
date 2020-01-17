@@ -1,5 +1,5 @@
-import movie from '../api';
-import { UPCOMING_MOVIES_REQUEST, UPCOMING_MOVIES_SUCCESS, UPCOMING_MOVIE_DETAIL_REQUEST } from '../constants/actionTypes';
+import movie from '../../api';
+import { UPCOMING_MOVIES_REQUEST, UPCOMING_MOVIES_SUCCESS, UPCOMING_MOVIE_DETAIL_REQUEST } from '../../constants/actionTypes';
 
 function getAllUpComingMovies() {
   function success(payload) {

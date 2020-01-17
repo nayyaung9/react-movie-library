@@ -1,15 +1,15 @@
 import { combineReducers } from 'redux';
-import popular from './reducers/popular';
-import upcoming from './reducers/upcoming';
-import nowPlaying from './reducers/nowPlaying';
-import genres from './reducers/genres';
-import similar from './reducers/similar';
-import latest from './reducers/latest';
-import toprated from './reducers/topRated';
-import credits from './reducers/credits';
-import reviews from './reducers/review';
-import TvOntheair from './reducers/onTheAir';
-import videos from './reducers/videos';
+import popular from './reducers/movies/popular';
+import upcoming from './reducers/movies/upcoming';
+import nowPlaying from './reducers/movies/nowPlaying';
+import genres from './reducers/movies/genres';
+import similar from './reducers/movies/similar';
+import latest from './reducers/movies/latest';
+import toprated from './reducers/movies/topRated';
+import credits from './reducers/movies/credits';
+import reviews from './reducers/movies/review';
+import TvOntheair from './reducers/tv/onTheAir';
+import videos from './reducers/movies/videos';
 
 export default combineReducers({
   popularMovies: popular,

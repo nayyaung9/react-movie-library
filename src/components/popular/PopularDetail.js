@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import AppDrawer from './../Drawer';
 
-import { popularActions } from '../../actions/popular';
-import { similarActions } from '../../actions/similar';
-import { reviewActions } from '../../actions/review';
-import { creditActions } from '../../actions/credits';
-import { videoActions } from '../../actions/videos';
+import { popularActions } from '../../actions/movies/popular';
+import { similarActions } from '../../actions/movies/similar';
+import { reviewActions } from '../../actions/movies/review';
+import { creditActions } from '../../actions/movies/credits';
+import { videoActions } from '../../actions/movies/videos';
 import { connect } from 'react-redux';
 
 import { Avatar, Divider, Comment, Skeleton, Tag, Rate } from 'antd';

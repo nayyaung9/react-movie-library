@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import AppDrawer from './../Drawer';
-import { popularActions } from '../../actions/popular';
+import { popularActions } from '../../actions/movies/popular';
 import { connect } from 'react-redux'
 import { Skeleton } from 'antd';
 import { Link } from 'react-router-dom';

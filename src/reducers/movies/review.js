@@ -1,4 +1,4 @@
-import { GET_MOVIE_DETAIL_REVIEW } from '../constants/actionTypes';
+import { GET_MOVIE_DETAIL_REVIEW } from '../../constants/actionTypes';
 
 const initialState = {
   reviews: []

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Layout, Menu, Icon, Drawer } from 'antd';
-import { genresActions } from '../actions/genres';
+import { genresActions } from '../actions/movies/genres';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import tvList from './TvList';

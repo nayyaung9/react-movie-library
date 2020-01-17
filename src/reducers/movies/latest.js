@@ -1,4 +1,4 @@
-import { GET_MOVIE_LATEST_REQUEST } from '../constants/actionTypes';
+import { GET_MOVIE_LATEST_REQUEST } from '../../constants/actionTypes';
 
 export default function(state = {}, action) {
   switch(action.type) {

@@ -1,5 +1,5 @@
-import api from '../api';
-import { GET_MOVIE_DETAIL_REVIEW } from '../constants/actionTypes'
+import api from '../../api';
+import { GET_MOVIE_DETAIL_REVIEW } from '../../constants/actionTypes'
 
 function getMovieDetailReview(data) {
   function success(payload) {

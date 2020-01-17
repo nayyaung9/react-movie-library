@@ -1,4 +1,4 @@
-import { GET_TOP_RATED_MOVIE_SUCCESS } from '../constants/actionTypes';
+import { GET_TOP_RATED_MOVIE_SUCCESS } from '../../constants/actionTypes';
 
 const initialState = {
   top_rate_movies: []

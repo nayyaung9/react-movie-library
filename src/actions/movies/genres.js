@@ -1,5 +1,5 @@
-import api from '../api';
-import { GET_GENRE_TYPE_LIST_REQUEST } from '../constants/actionTypes';
+import api from '../../api';
+import { GET_GENRE_TYPE_LIST_REQUEST } from '../../constants/actionTypes';
 
 function getGenresListType() {
   function success(payload) {
