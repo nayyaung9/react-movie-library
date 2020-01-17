@@ -6,7 +6,7 @@ import { similarActions } from '../../actions/similar';
 import { reviewActions } from '../../actions/review';
 import { connect } from 'react-redux';
 
-import { Avatar, Skeleton, Divider, Comment } from 'antd';
+import { Avatar, Divider, Comment } from 'antd';
 
 const formatter = new Intl.NumberFormat('en-US', {
   style: 'currency',
@@ -51,7 +51,7 @@ class PopularDetail extends Component {
             <div className="board_data" style={{ paddingTop: '60px' }}>
               <div className="row">
                 <div className="col-md-4 text-right">
-                  <img src={`https://image.tmdb.org/t/p/w185_and_h278_bestv2/${movie.poster_path}`} className="cover__image" />
+                  <img src={`https://image.tmdb.org/t/p/w185_and_h278_bestv2/${movie.poster_path}`} alt={movie.title} className="cover__image" />
                 </div>
                 <div className="col-md-8 text-left">
                   <h3>{movie.title}</h3>
@@ -108,11 +108,14 @@ class PopularDetail extends Component {
             </div>
           </div>
 
+          <Divider />
+
           <div className="comments">
+            <h3>Reviews</h3>
             {this.props.reviews.map((item, index) => {
               return (
                 <Comment
-                  author={<a>{item.author}</a>}
+                  author={item.author}
                   avatar={
                     <Avatar
                       src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png"
@@ -121,7 +124,7 @@ class PopularDetail extends Component {
                   }
                   content={
                     <p>
-                      {item.content}
+                      {item.content.split('\n', 3)[0]}
                     </p>
 
                   }
