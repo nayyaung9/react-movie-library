@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import AppDrawer from './../Drawer';
 
-import { popularActions } from '../../actions/popular';
+import { upcomingActions } from '../../actions/upcoming';
 import { similarActions } from '../../actions/similar';
 import { reviewActions } from '../../actions/review';
 import { creditActions } from '../../actions/credits';
@@ -26,10 +26,10 @@ const timeConvert = n => {
   return `${rhours}h ${rminutes}mm`;
 }
 
-class PopularDetail extends Component {
+class UpComingDetail extends Component {
   componentDidMount() {
     const { match: { params: { id } } } = this.props;
-    this.props.getPopularMovieDetail(id);
+    this.props.getUpcomingMovieDetail(id);
     this.props.getAllSimilarMovies(id);
     this.props.getMovieDetailReviews(id);
     this.props.getMovieDetailCrews(id);
@@ -38,6 +38,7 @@ class PopularDetail extends Component {
 
   render() {
     const { movie, videos } = this.props;
+    const vote = movie.vote_average / 2;
     return (
       <AppDrawer>
         <div className="board"
@@ -55,11 +56,10 @@ class PopularDetail extends Component {
                   </div>
                   <div className="col-md-8 movie_data">
                     <h4 className="movie_title">{movie.title}</h4>
-                    
                     <div className="overview mt-4">
                       <h5 className="text-white">Overview</h5>
-                      <p className="text-white">{movie.overview} </p>
-                      <Rate disabled defaultValue={movie.vote_average / 2} />
+                      <p className="text-white">{movie.overview}</p>
+                      <Rate disabled defaultValue={vote} />
                     </div>
                   </div>
                 </div>
@@ -67,7 +67,6 @@ class PopularDetail extends Component {
             </div>
           </div>
         </div>
-
 
         <div className="container">
           {/* Top Billed Cast */}
@@ -105,14 +104,14 @@ class PopularDetail extends Component {
                 <span>Duration: <span className="text-secondary">{timeConvert(movie.runtime)}</span></span>
               </div>
               <div className="released_date mb-2">
-                <span>Released date: 
+                <span>Released date:
                   <span className="text-secondary">
                     {moment(movie.release_date).format("DD MMM YY")}
                   </span>
                 </span>
               </div>
               <div className="budget mt-2">
-              <span>Budget: <span className="text-secondary">{formatter.format(movie.budget)}</span></span>
+                <span>Budget: <span className="text-secondary">{formatter.format(movie.budget)}</span></span>
               </div>
               <div className="languages mt-2">
                 <h6>Languages</h6>
@@ -125,7 +124,7 @@ class PopularDetail extends Component {
                 {movie.genres && movie.genres.map((item, index) => {
                   return <Tag color="orange" key={index}>{item.name}</Tag>
                 })}
-              </div>     
+              </div>
             </div>
           </div>
           <Divider />
@@ -213,12 +212,12 @@ class PopularDetail extends Component {
 }
 
 const mapStateToProps = state => {
-  const { popularMovies, similarMovies, reviews, credits, videos } = state;
+  const { upcomingMovies, similarMovies, reviews, credits, videos } = state;
   return {
-    movie: popularMovies.singlePopular,
+    movie: upcomingMovies.singleUpcoming,
     similarMovies: similarMovies.similar,
     reviews: reviews.reviews,
-    loading: popularMovies.loading,
+    loading: upcomingMovies.loading,
     casts: credits.casts,
     videos: videos.videos,
     videosLoading: videos.loading
@@ -226,7 +225,7 @@ const mapStateToProps = state => {
 }
 const mapDispatchToProps = dispatch => {
   return {
-    getPopularMovieDetail: data => dispatch(popularActions.getPopularMovieDetail(data)),
+    getUpcomingMovieDetail: data => dispatch(upcomingActions.getUpcomingMovieDetail(data)),
     getAllSimilarMovies: data => dispatch(similarActions.getAllSimilarMovies(data)),
     getMovieDetailReviews: data => dispatch(reviewActions.getMovieDetailReview(data)),
     getMovieDetailCrews: data => dispatch(creditActions.getMovieDetailCrews(data)),
@@ -236,4 +235,4 @@ const mapDispatchToProps = dispatch => {
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(PopularDetail);
+)(UpComingDetail);

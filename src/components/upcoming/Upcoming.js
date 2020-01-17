@@ -4,6 +4,8 @@ import { upcomingActions } from '../../actions/upcoming';
 import { connect } from 'react-redux'
 
 import { Skeleton } from 'antd';
+import { Link } from 'react-router-dom';
+
 class UpComing extends Component {
   componentDidMount() {
     this.props.getAllUpcomingMovies();
@@ -22,7 +24,9 @@ class UpComing extends Component {
               : this.props.upcoming.map((item, index) => {
                 return (
                   <div  className="col-md-3 col-6 cover_image_board" key={index}>
-                    <img src={`https://image.tmdb.org/t/p/w185_and_h278_bestv2/${item.poster_path}`} className="cover__image" alt={item.title} />
+                    <Link to={`/upcoming/movie/${item.id}`}>
+                      <img src={`https://image.tmdb.org/t/p/w185_and_h278_bestv2/${item.poster_path}`} className="cover__image" alt={item.title} />
+                    </Link>
                     <h5>{item.title}</h5>
                   </div>
                 )

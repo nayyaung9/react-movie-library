@@ -8,6 +8,7 @@ import Popular from './popular/Popular';
 import PopularDetail from './popular/PopularDetail';
 
 import Upcoming from './upcoming/Upcoming';
+import UpComingDetail from './upcoming/UpComingDetail';
 
 import Playing from './Playing/Playing';
 
@@ -24,7 +25,8 @@ class App extends React.Component {
           <Route path='/popular/movie/:id' component={PopularDetail} />
 
           <Route path='/upcoming/movies' component={Upcoming} />
-
+          <Route path='/upcoming/movie/:id' component={UpComingDetail} />
+          
           <Route path='/now_playing' component={Playing} />
 
           <Route path='/tv/on_the_air' component={OnTheAir} />

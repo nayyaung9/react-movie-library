@@ -56,7 +56,9 @@ class Home extends React.Component {
               : this.props.upcoming.map((item, index) => {
                 return (
                   <div key={index}>
-                    <img src={`https://image.tmdb.org/t/p/w185_and_h278_bestv2/${item.poster_path}`} alt={item.title} />
+                    <Link to={`/upcoming/movie/${item.id}`}>
+                      <img src={`https://image.tmdb.org/t/p/w185_and_h278_bestv2/${item.poster_path}`} alt={item.title} />
+                    </Link>
                     <span>{item.title}</span>
                   </div>
                 )
@@ -78,7 +80,9 @@ class Home extends React.Component {
               : this.props.popular.map((item, index) => {
                 return (
                   <div key={index}>
-                    <img src={`https://image.tmdb.org/t/p/w185_and_h278_bestv2/${item.poster_path}`} alt={item.title} />
+                    <Link to={`/popular/movie/${item.id}`}>
+                      <img src={`https://image.tmdb.org/t/p/w185_and_h278_bestv2/${item.poster_path}`} alt={item.title} />
+                    </Link>
                     <span>{item.title}</span>
                   </div>
                 )
