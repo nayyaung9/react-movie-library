@@ -20,6 +20,9 @@ import SinglePlaying from './Playing/SinglePlaying';
 import OnTheAir from './tv/OnTheAir';
 import OnTheAirDetail from './tv/OnTheAirDetail';
 
+// genre
+import Discover from './genre/discover';
+
 class App extends React.Component {
   render() {
     return (
@@ -42,6 +45,8 @@ class App extends React.Component {
 
           <Route path='/tv/channels/on_the_air' component={OnTheAir} />
           <Route path='/tv/channel/on_the_air/:id' component={OnTheAirDetail} />
+
+          <Route path='/genres/:genreName/:genreId' component={Discover} />
         </Router>
       </div>
     )

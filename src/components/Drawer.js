@@ -85,7 +85,13 @@ class AppDrawer extends React.Component {
               }
             >
               {this.props.genres.map((item, index) => {
-                return <Menu.Item key={index}>{item.name}</Menu.Item>
+                return (
+                  
+                  <Menu.Item key={index}>
+                    <Link to={`/genres/${item.name.toLowerCase()}/${item.id}`}>{item.name}</Link></Menu.Item>
+                  
+                 
+                )
               })}
             </SubMenu>
             <Menu.Item key="4">
