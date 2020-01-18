@@ -60,52 +60,46 @@ class AppDrawer extends React.Component {
             </div>
             <Menu.Item key="1">
               <Link to='/popular/movies'>
-                <span className="nav-text">Popular Movies</span>
+                <Icon type="video-camera" /><span className="nav-text">Popular Movies</span>
               </Link>
             </Menu.Item>
             <Menu.Item key="2">
               <Link to='/upcoming/movies'>
-                <span className="nav-text"> Upcoming Movies </span>
+                <Icon type="video-camera" /><span className="nav-text"> Upcoming Movies </span>
               </Link>
             </Menu.Item>
             <Menu.Item key="3">
-              <Link to="/now_playing">
-                <span className="nav-text">Now Playing</span>
+              <Link to="/now/playing/movies">
+                <Icon type="video-camera" /><span className="nav-text">Now Playing</span>
               </Link>
             </Menu.Item>
             <Menu.Item key="3">
               <Link to="/top_rated/movies">
-                <span className="nav-text">Top Rated</span>
+                <Icon type="video-camera" /><span className="nav-text">Top Rated</span>
               </Link>
             </Menu.Item>
             <SubMenu
               key="sub1"
               title={
                 <span>
-                  <Icon type="user" />
+                  <Icon type="video-camera" />
                   <span>Genre movies</span>
                 </span>
               }
             >
               {this.props.genres.map((item, index) => {
                 return (
-                  
                   <Menu.Item key={index}>
-                    <Link to={`/genres/${item.name.toLowerCase()}/${item.id}`}>{item.name}</Link></Menu.Item>
-                  
-                 
+                    <Link to={`/genres/${item.name.toLowerCase()}/${item.id}`}>{item.name}</Link>
+                  </Menu.Item>
                 )
               })}
             </SubMenu>
-            <Menu.Item key="4">
-              <Icon type="user" />
-              <span className="nav-text">nav 4</span>
-            </Menu.Item>
             <SubMenu
               key="sub2"
               title={
                 <span>
-                  <Icon type="user" />
+                  <Icon type="video-camera" />
                   <span>tv</span>
                 </span>
               }

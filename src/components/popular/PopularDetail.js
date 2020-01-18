@@ -7,7 +7,7 @@ import { reviewActions } from '../../actions/movies/review';
 import { creditActions } from '../../actions/movies/credits';
 import { videoActions } from '../../actions/movies/videos';
 import { connect } from 'react-redux';
-
+import { Link } from 'react-router-dom';
 import { Avatar, Divider, Comment, Skeleton, Tag, Rate } from 'antd';
 import moment from 'moment';
 
@@ -141,7 +141,9 @@ class PopularDetail extends Component {
                     ? this.props.similarMovies.map((item, index) => {
                       return (
                         <div key={index}>
-                          <img src={`https://image.tmdb.org/t/p/w185_and_h278_bestv2/${item.poster_path}`} alt={item.title} />
+                          <Link to={`/movie/similar/${item.id}`}>
+                            <img src={`https://image.tmdb.org/t/p/w185_and_h278_bestv2/${item.poster_path}`} alt={item.title} />
+                          </Link>
                           <span>{item.title}</span>
                         </div>
                       )

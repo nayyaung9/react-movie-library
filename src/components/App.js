@@ -20,6 +20,8 @@ import SinglePlaying from './Playing/SinglePlaying';
 import OnTheAir from './tv/OnTheAir';
 import OnTheAirDetail from './tv/OnTheAirDetail';
 
+import SimilarDetail from './similar/SimilarDetail';
+
 // genre
 import Discover from './genre/discover';
 
@@ -44,6 +46,8 @@ class App extends React.Component {
           <Route path='/top_rated/movies' component={TopRated} />
 
           <Route path='/latest' component={Latest} />
+
+          <Route path='/movie/similar/:id' component={SimilarDetail} />
           
           <Route path='/now/playing/movies' component={Playing} />
           <Route path='/now/playing/movie/:id' component={SinglePlaying} />

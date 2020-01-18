@@ -28,7 +28,7 @@ class Home extends React.Component {
             </div>
           </div>
 
-          <h5>In Theaters</h5>
+          <h5>In Theaters (US)</h5>
           <div className="scrollmenu">
             {this.props.nowPlayingLoading
               ? <Skeleton avatar active />
@@ -79,7 +79,7 @@ class Home extends React.Component {
           <div className="scrollmenu">
             {this.props.upcomingLoading
               ? <Skeleton avatar active paragraph={{ rows: 4 }} />
-              : this.props.popular.map((item, index) => {
+              : this.props.popular && this.props.popular.map((item, index) => {
                 return (
                   <div key={index}>
                     <Link to={`/popular/movie/${item.id}`}>
