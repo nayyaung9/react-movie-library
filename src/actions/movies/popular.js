@@ -1,5 +1,10 @@
 import api from '../../api';
-import { POPULAR_MOVIES_REQUEST, POPULAR_MOVIE_DETAIL_REQUEST, POPULAR_MOVIE_DETAIL_SUCCESS } from '../../constants/actionTypes';
+import { 
+  POPULAR_MOVIES_REQUEST, 
+  POPULAR_MOVIE_DETAIL_REQUEST, 
+  POPULAR_MOVIE_DETAIL_SUCCESS,
+  POPULAR_MOVIES_PAGE_CHANGE
+} from '../../constants/actionTypes';
 
 function getAllPopularMovies() {
   function success(payload) {
@@ -7,10 +12,10 @@ function getAllPopularMovies() {
   }
 
   return dispatch => {
-    api.get(`/movie/popular?api_key=${process.env.REACT_APP_API_KEY}&language=en-US&page=1`)
+    api.get(`/movie/popular?api_key=${process.env.REACT_APP_API_KEY}&language=en-US&page=200`)
     .then(
       payload => {
-        dispatch(success(payload.data.results))
+        dispatch(success(payload.data))
       },
       err => console.log(err)
     )
@@ -35,7 +40,24 @@ function getPopularMovieDetail(data) {
     )
   }
 }
+
+function getPopularMoviesByPage(data) {
+  function success(payload) {
+    return { type: POPULAR_MOVIES_PAGE_CHANGE, payload }
+  }
+
+  return dispatch => {
+    api.get(`/movie/popular?api_key=${process.env.REACT_APP_API_KEY}&language=en-US&page=${data}`)
+    .then(
+      payload => {
+        dispatch(success(payload.data))
+      },
+      err => console.log(err)
+    )
+  }
+}
 export const popularActions = {
   getAllPopularMovies,
-  getPopularMovieDetail
+  getPopularMovieDetail,
+  getPopularMoviesByPage
 }

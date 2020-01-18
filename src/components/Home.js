@@ -121,7 +121,7 @@ class Home extends React.Component {
 
 const mapStateToProps = state => {
   return {
-    popular: state.popularMovies.popular,
+    popular: state.popularMovies.popular.results,
 
     upcoming: state.upcomingMovies.upcoming,
     upcomingLoading: state.upcomingMovies.loading,

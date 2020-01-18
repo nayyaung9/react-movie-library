@@ -8,7 +8,6 @@ import { connect } from 'react-redux';
 class Discover extends React.Component {
   componentDidMount() {
     this.getMoviesGenreList();
-    console.log(this.props)
   }
 
   getMoviesGenreList = () => {
@@ -20,13 +19,8 @@ class Discover extends React.Component {
     if(prevProps.match.params.genreId !== this.props.match.params.genreId) {
       this.getMoviesGenreList();
     }
-    
   }
-  // componentWillReceiveProps(nextProps) {
-  //   if(nextProps.match.params.genreId !== this.props.match.params.id) {
-  //     // this.getMoviesGenreList();
-  //   }
-  // }
+
   render() {
     return (
       <AppDrawer>

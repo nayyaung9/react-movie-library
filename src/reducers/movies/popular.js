@@ -1,4 +1,9 @@
-import { POPULAR_MOVIES_REQUEST, POPULAR_MOVIE_DETAIL_REQUEST, POPULAR_MOVIE_DETAIL_SUCCESS } from '../../constants/actionTypes';
+import { 
+  POPULAR_MOVIES_REQUEST, 
+  POPULAR_MOVIE_DETAIL_REQUEST, 
+  POPULAR_MOVIE_DETAIL_SUCCESS,
+  POPULAR_MOVIES_PAGE_CHANGE
+} from '../../constants/actionTypes';
 
 const initialState = {
   popular: [],
@@ -9,6 +14,11 @@ const initialState = {
 export default function(state = initialState, action) {
   switch(action.type) {
     case POPULAR_MOVIES_REQUEST:
+      return {
+        ...state,
+        popular: action.payload
+      }
+    case POPULAR_MOVIES_PAGE_CHANGE:
       return {
         ...state,
         popular: action.payload

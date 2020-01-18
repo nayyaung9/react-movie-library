@@ -40,7 +40,10 @@ class AppDrawer extends React.Component {
               </Link>
             </div>
             <div className="col-2 text-right">
+              <Link to='/search'>
               <Icon type="search" style={{ fontSize: '20px' }} />
+              </Link>
+              
             </div>
           </div>
         </Header>

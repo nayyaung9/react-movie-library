@@ -23,6 +23,8 @@ import OnTheAirDetail from './tv/OnTheAirDetail';
 // genre
 import Discover from './genre/discover';
 
+import Search from './search/Search';
+
 class App extends React.Component {
   render() {
     return (
@@ -30,6 +32,9 @@ class App extends React.Component {
         <Router history={history}>
        
           <Route exact path='/' component={Home} />
+
+          <Route path='/search' component={Search} />
+          
           <Route path='/popular/movies' component={Popular} />
           <Route path='/popular/movie/:id' component={PopularDetail} />
 
