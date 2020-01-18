@@ -29,7 +29,7 @@ const timeConvert = n => {
 class SimilarDetail extends Component {
   componentDidMount() {
     const { match: { params: { id } } } = this.props;
-    this.props.getPopularMovieDetail(id);
+    this.props.getSimilarMovieDetail(id);
     this.props.getAllSimilarMovies(id);
     this.props.getMovieDetailReviews(id);
     this.props.getMovieDetailCrews(id);
@@ -215,7 +215,7 @@ class SimilarDetail extends Component {
 const mapStateToProps = state => {
   const { popularMovies, similarMovies, reviews, credits, videos } = state;
   return {
-    movie: popularMovies.singlePopular,
+    movie: similarMovies.singleSimilar,
     similarMovies: similarMovies.similar,
     reviews: reviews.reviews,
     loading: popularMovies.loading,
