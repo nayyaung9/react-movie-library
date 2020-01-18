@@ -6,6 +6,10 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 class Discover extends React.Component {
+  state = {
+    genreTitle: ''
+  }
+
   componentDidMount() {
     this.getMoviesGenreList();
   }
@@ -21,11 +25,19 @@ class Discover extends React.Component {
     }
   }
 
+  componentWillReceiveProps(prevProps) {
+    const data = prevProps.match.params.genreName
+    this.setState({
+      genreTitle: data
+    })
+  }
+
   render() {
+    const { genreTitle } = this.state;
     return (
       <AppDrawer>
         <div className="container">
-          <h5>Popular movies</h5>
+          <h5>{genreTitle} movies</h5>
           <div className="row">
             {this.props.movies.map((item, index) => {
                 return (

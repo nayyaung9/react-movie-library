@@ -1,4 +1,9 @@
-import { UPCOMING_MOVIES_REQUEST, UPCOMING_MOVIES_SUCCESS, UPCOMING_MOVIE_DETAIL_REQUEST } from '../../constants/actionTypes';
+import { 
+  UPCOMING_MOVIES_REQUEST, 
+  UPCOMING_MOVIES_SUCCESS, 
+  UPCOMING_MOVIE_DETAIL_REQUEST,
+  UPCOMING_MOVIES_PAGE_CHANGE
+} from '../../constants/actionTypes';
 
 const initialState = {
   upcoming: [],
@@ -14,6 +19,11 @@ export default function(state = initialState, action) {
         loading: action.payload
       }
     case UPCOMING_MOVIES_SUCCESS:
+      return {
+        ...state,
+        upcoming: action.payload
+      }
+    case UPCOMING_MOVIES_PAGE_CHANGE:
       return {
         ...state,
         upcoming: action.payload

@@ -3,9 +3,13 @@ import AppDrawer from '../Drawer';
 
 import { nowPlayingActions } from '../../actions/movies/nowPlaying';
 import { connect } from 'react-redux';
+import { Pagination } from 'antd';
 import { Link } from 'react-router-dom';
 
 class Playing extends React.Component {
+  state = {
+    page: 1
+  }
   componentDidMount() {
     this.props.getAllNowPlayingMovies();
   }
@@ -14,8 +18,13 @@ class Playing extends React.Component {
       <AppDrawer>
         <div className="container">
           <h5>Now Playing in Theaters</h5>
+          <div className="row" style={{ marginBottom: '40px' }}>
+            <div className="col-md-12 text-center">
+              <Pagination current={this.state.page} total={this.props.pages} onChange={this.onPageChange} />
+            </div>
+          </div>
           <div className="row">
-            {this.props.movies.map((item, index) => {
+            {this.props.movies && this.props.movies.map((item, index) => {
                 return (
                   <div className="col col-md-3 col-6 cover_image_board" key={index}>
                     <Link to={`/now/playing/movie/${item.id}`}>
@@ -26,6 +35,11 @@ class Playing extends React.Component {
                 )
               })}
           </div>
+          <div className="row" style={{ marginBottom: '40px' }}>
+            <div className="col-md-12 text-center">
+              <Pagination current={this.state.page} total={this.props.pages} onChange={this.onPageChange} />
+            </div>
+          </div>
         </div>
       </AppDrawer>
     )
@@ -34,7 +48,8 @@ class Playing extends React.Component {
 
 const mapStateToProps = ({ nowPlaying }) => {
   return {
-    movies: nowPlaying.nowplaying
+    movies: nowPlaying.nowplaying.results,
+    pages: nowPlaying.nowplaying.total_pages
   }
 }
 const mapDispatchToProps = dispatch => {

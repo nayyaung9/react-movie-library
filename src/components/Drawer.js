@@ -73,7 +73,7 @@ class AppDrawer extends React.Component {
                 <Icon type="video-camera" /><span className="nav-text">Now Playing</span>
               </Link>
             </Menu.Item>
-            <Menu.Item key="3">
+            <Menu.Item key="4">
               <Link to="/top_rated/movies">
                 <Icon type="video-camera" /><span className="nav-text">Top Rated</span>
               </Link>

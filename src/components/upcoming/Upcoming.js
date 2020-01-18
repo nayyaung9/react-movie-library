@@ -3,21 +3,34 @@ import AppDrawer from './../Drawer';
 import { upcomingActions } from '../../actions/movies/upcoming';
 import { connect } from 'react-redux'
 
-import { Skeleton } from 'antd';
+import { Skeleton, Pagination } from 'antd';
 import { Link } from 'react-router-dom';
 
 class UpComing extends Component {
+  state = {
+    page: 1
+  }
+
   componentDidMount() {
     this.props.getAllUpcomingMovies();
   }
+
+  onPageChange = page => {
+    this.setState({ page });
+    this.props.getUpcomingMoviesByPage(page)
+  }
+
   render() {
     return (
       <AppDrawer>
         <div className="container">
           <h3>Upcoming movies</h3>
+          <div className="row" style={{ marginBottom: '40px' }}>
+            <div className="col-md-12 text-center">
+              <Pagination current={this.state.page} total={this.props.pages} onChange={this.onPageChange} />
+            </div>
+          </div>
           <div className="row">
-          
-        
           
             {this.props.upcomingLoading
               ? <Skeleton avatar active paragraph={{ rows: 4 }} />
@@ -32,6 +45,11 @@ class UpComing extends Component {
                 )
               })}
          </div>
+         <div className="row" style={{ marginBottom: '40px' }}>
+            <div className="col-md-12 text-center">
+              <Pagination current={this.state.page} total={this.props.pages} onChange={this.onPageChange} />
+            </div>
+          </div>
         </div>
       </AppDrawer>
     )
@@ -40,13 +58,15 @@ class UpComing extends Component {
 
 const mapStateToProps = state => {
   return {
-    upcoming: state.upcomingMovies.upcoming
+    upcoming: state.upcomingMovies.upcoming.results,
+    pages: state.upcomingMovies.upcoming.total_pages
   }
 }
 
 const mapDispatchToProps = dispatch => {
   return {
-    getAllUpcomingMovies: () => dispatch(upcomingActions.getAllUpComingMovies())
+    getAllUpcomingMovies: () => dispatch(upcomingActions.getAllUpComingMovies()),
+    getUpcomingMoviesByPage: data => dispatch(upcomingActions.getUpcomingMoviesByPage(data))
   }
 }
 

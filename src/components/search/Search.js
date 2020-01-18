@@ -23,6 +23,12 @@ class Search extends React.Component {
   }
   render() {
     const { title } = this.state;
+
+    // searched keywords are hidden
+    // this.props.keywords.filter((item, index) => {
+    //   return this.props.keywords.indexOf(item) >= index
+    // });
+
     return (
       <AppDrawer>
         <div className="container">
@@ -36,13 +42,6 @@ class Search extends React.Component {
           <div className="searched__keywords mt-2">
             <div className="row">
               <div className="col-md-12">
-                {this.props.keywords && this.props.keywords.map((item, index) => {
-                  return (
-                    <Button key={index} className="mr-2" onClick={() => this.onClickSearch(item)}>
-                      {item}
-                    </Button>
-                  )
-                })}
               </div>
             </div>
           </div>
@@ -50,7 +49,7 @@ class Search extends React.Component {
             {this.props.movies.map((item, index) => {
               return (
                 <div className="col col-md-3 col-6 cover_image_board" key={index}>
-                  <Link to='/#'>
+                  <Link to={`/movie/similar/${item.id}`}>
                     <img src={`
                       ${ item.poster_path !== null
                         ? `https://image.tmdb.org/t/p/w185_and_h278_bestv2/${item.poster_path}`

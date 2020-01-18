@@ -10,6 +10,7 @@ import { connect } from 'react-redux';
 
 import { Avatar, Divider, Comment, Skeleton, Tag, Rate } from 'antd';
 import moment from 'moment';
+import { Link } from 'react-router-dom';
 
 const formatter = new Intl.NumberFormat('en-US', {
   style: 'currency',
@@ -28,6 +29,10 @@ const timeConvert = n => {
 
 class SimilarDetail extends Component {
   componentDidMount() {
+    this.getAllMovieData();
+  }
+
+  getAllMovieData = () => {
     const { match: { params: { id } } } = this.props;
     this.props.getSimilarMovieDetail(id);
     this.props.getAllSimilarMovies(id);
@@ -35,6 +40,13 @@ class SimilarDetail extends Component {
     this.props.getMovieDetailCrews(id);
     this.props.getMovieDetailVideos(id)
   }
+
+  componentDidUpdate(prevProps) {
+    if(prevProps.match.params.id !== this.props.match.params.id) {
+      this.getAllMovieData();
+    }
+  }
+
 
   render() {
     const { movie, videos } = this.props;
@@ -91,23 +103,23 @@ class SimilarDetail extends Component {
                       </div>
                     )
                   })
-                  : <span>No similar movies</span>
+                  : <span>No Casts </span>
                 }
               </div>
             </div>
 
             <div className="col-md-4" style={{ paddingTop: '10px' }}>
               <div className="status mb-2">
-                <h6>Status</h6>
-                <span className="text-secondary">{movie.status}</span>
+                <span>Status: </span>
+                <span className="text-secondary"> {movie.status}</span>
               </div>
               <div className="duration mb-2">
                 <span>Duration: <span className="text-secondary">{timeConvert(movie.runtime)}</span></span>
               </div>
               <div className="released_date mb-2">
-                <span>Released date: 
+                <span>Released date:&nbsp;
                   <span className="text-secondary">
-                    {moment(movie.release_date).format("DD MMM YY")}
+                     {moment(movie.release_date).format("DD MMM YY")}
                   </span>
                 </span>
               </div>
@@ -123,7 +135,11 @@ class SimilarDetail extends Component {
               <div className="genres mt-2">
                 <h6>Genres</h6>
                 {movie.genres && movie.genres.map((item, index) => {
-                  return <Tag color="orange" key={index}>{item.name}</Tag>
+                  return ( 
+                    <Tag color="orange" key={index}>
+                      <Link to={`/genres/${item.name}/${item.id}`}>{item.name}</Link>
+                    </Tag>
+                  )
                 })}
               </div>     
             </div>
@@ -141,7 +157,9 @@ class SimilarDetail extends Component {
                     ? this.props.similarMovies.map((item, index) => {
                       return (
                         <div key={index}>
-                          <img src={`https://image.tmdb.org/t/p/w185_and_h278_bestv2/${item.poster_path}`} alt={item.title} />
+                          <Link to={`/movie/similar/${item.id}`}>
+                            <img src={`https://image.tmdb.org/t/p/w185_and_h278_bestv2/${item.poster_path}`} alt={item.title} />
+                          </Link>
                           <span>{item.title}</span>
                         </div>
                       )
@@ -161,7 +179,8 @@ class SimilarDetail extends Component {
             ? <Skeleton active avatar paragraph={{ rows: 4 }} />
             : (
               <div className="scrollmenu">
-                {videos && videos.map((item, index) => {
+                { videos.length 
+                ? videos.map((item, index) => {
                   return (
                     <iframe width="560" height="315" key={index}
                       src={`https://www.youtube.com/embed/${item.key}`}
@@ -171,11 +190,14 @@ class SimilarDetail extends Component {
                       allowFullScreen>
                     </iframe>
                   )
-                })}
+                })
+                : <span>No Trailers available</span>
+              }
               </div>
             )
           }
 
+            <Divider />
 
           {/* Reviews */}
           {this.props.loading

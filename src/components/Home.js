@@ -28,11 +28,19 @@ class Home extends React.Component {
             </div>
           </div>
 
-          <h5>In Theaters (US)</h5>
+          <div className="row" style={{ fontWeight: 'bold' }}>
+            <div className="col-6">
+              <h5>In Theaters (US)</h5>
+            </div>
+            <div className="col-6 text-right">
+              <Link to='/now/playing/movies' className="anchor">See all</Link>
+            </div>
+          </div>
+
           <div className="scrollmenu">
             {this.props.nowPlayingLoading
               ? <Skeleton avatar active />
-              : this.props.nowPlaying.map((item, index) => {
+              : this.props.nowPlaying && this.props.nowPlaying.map((item, index) => {
                 return (
                   <span key={index}>
                     <Link to={`/now/playing/movie/${item.id}`}>
@@ -55,7 +63,7 @@ class Home extends React.Component {
           <div className="scrollmenu">
             {this.props.upcomingLoading
               ? <Skeleton avatar active paragraph={{ rows: 4 }} />
-              : this.props.upcoming.map((item, index) => {
+              : this.props.upcoming && this.props.upcoming.map((item, index) => {
                 return (
                   <div key={index}>
                     <Link to={`/upcoming/movie/${item.id}`}>
@@ -119,19 +127,19 @@ class Home extends React.Component {
   }
 }
 
-const mapStateToProps = state => {
+const mapStateToProps = ({ popularMovies, upcomingMovies, nowPlaying, toprated, genres }) => {
   return {
-    popular: state.popularMovies.popular.results,
+    popular: popularMovies.popular.results,
 
-    upcoming: state.upcomingMovies.upcoming,
-    upcomingLoading: state.upcomingMovies.loading,
+    upcoming: upcomingMovies.upcoming.results,
+    upcomingLoading: upcomingMovies.loading,
 
-    nowPlaying: state.nowPlaying.nowplaying,
-    nowPlayingLoading: state.nowPlaying.loading,
+    nowPlaying: nowPlaying.nowplaying.results,
+    nowPlayingLoading: nowPlaying.loading,
 
-    topratedMovies: state.toprated.top_rate_movies,
+    topratedMovies: toprated.top_rate_movies,
 
-    genres: state.genres.genres
+    genres: genres.genres
   }
 }
 

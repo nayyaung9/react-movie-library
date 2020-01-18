@@ -98,14 +98,14 @@ class UpComingDetail extends Component {
 
             <div className="col-md-4" style={{ paddingTop: '10px' }}>
               <div className="status mb-2">
-                <h6>Status</h6>
-                <span className="text-secondary">{movie.status}</span>
+                <span>Status: </span>
+                <span className="text-secondary"> {movie.status}</span>
               </div>
               <div className="duration mb-2">
                 <span>Duration: <span className="text-secondary">{timeConvert(movie.runtime)}</span></span>
               </div>
               <div className="released_date mb-2">
-                <span>Released date:
+                <span>Released date: &nbsp;
                   <span className="text-secondary">
                     {moment(movie.release_date).format("DD MMM YY")}
                   </span>
