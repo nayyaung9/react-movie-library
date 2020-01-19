@@ -55,7 +55,7 @@ class PopularDetail extends Component {
                   </div>
                   <div className="col-md-8 movie_data">
                     <h4 className="movie_title">{movie.title}</h4>
-                    
+
                     <div className="overview mt-4">
                       <h5 className="text-white">Overview</h5>
                       <p className="text-white">{movie.overview} </p>
@@ -114,7 +114,7 @@ class PopularDetail extends Component {
                 </span>
               </div>
               <div className="budget mt-2">
-              <span>Budget: <span className="text-secondary">{formatter.format(movie.budget)}</span></span>
+                <span>Budget: <span className="text-secondary">{formatter.format(movie.budget)}</span></span>
               </div>
               <div className="languages mt-2">
                 <h6>Languages</h6>
@@ -127,7 +127,7 @@ class PopularDetail extends Component {
                 {movie.genres && movie.genres.map((item, index) => {
                   return <Tag color="orange" key={index}>{item.name}</Tag>
                 })}
-              </div>     
+              </div>
             </div>
           </div>
           <Divider />
@@ -165,20 +165,20 @@ class PopularDetail extends Component {
             ? <Skeleton active avatar paragraph={{ rows: 4 }} />
             : (
               <div className="scrollmenu">
-                {videos 
-                 ? videos.map((item, index) => {
-                  return (
-                    <iframe width="560" height="315" key={index}
-                      src={`https://www.youtube.com/embed/${item.key}`}
-                      title={item.key}
-                      frameBorder="0"
-                      allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-                      allowFullScreen>
-                    </iframe>
-                  )
-                })
-                : <span>No Trailers available</span>
-              }
+                {videos
+                  ? videos.map((item, index) => {
+                    return (
+                      <iframe width="560" height="315" key={index}
+                        src={`https://www.youtube.com/embed/${item.key}`}
+                        title={item.key}
+                        frameBorder="0"
+                        allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                        allowFullScreen>
+                      </iframe>
+                    )
+                  })
+                  : <span>No Trailers available</span>
+                }
               </div>
             )
           }

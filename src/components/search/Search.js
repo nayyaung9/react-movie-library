@@ -1,6 +1,6 @@
 import React from 'react';
 import AppDrawer from '../Drawer';
-import { Input, Button } from 'antd';
+import { Input } from 'antd';
 
 import { searchActions } from '../../actions/search/search';
 import { connect } from 'react-redux';

@@ -38,7 +38,7 @@ class SingleCredit extends React.Component {
 
 
               <h6>gender</h6>
-              <span>{person.gender == 2 ? 'Male' : 'Female'}</span>
+              <span>{person.gender === 2 ? 'Male' : 'Female'}</span>
             </div>
             <div className="col-md-6">
               <div className="row">
