@@ -42,7 +42,7 @@ class SimilarDetail extends Component {
   }
 
   componentDidUpdate(prevProps) {
-    if(prevProps.match.params.id !== this.props.match.params.id) {
+    if (prevProps.match.params.id !== this.props.match.params.id) {
       this.getAllMovieData();
     }
   }
@@ -67,7 +67,7 @@ class SimilarDetail extends Component {
                   </div>
                   <div className="col-md-8 movie_data">
                     <h4 className="movie_title">{movie.title}</h4>
-                    
+
                     <div className="overview mt-4">
                       <h5 className="text-white">Overview</h5>
                       <p className="text-white">{movie.overview} </p>
@@ -91,13 +91,15 @@ class SimilarDetail extends Component {
                   ? this.props.casts.map((item, index) => {
                     return (
                       <div key={index}>
-                        <img src={`
+                        <Link to={`/person/${item.credit_id}`}>
+                          <img src={`
                           ${
-                          item.profile_path !== null
-                            ? `https://image.tmdb.org/t/p/w138_and_h175_face/${item.profile_path}`
-                            : `/images/default_user.png`
-                          }
+                            item.profile_path !== null
+                              ? `https://image.tmdb.org/t/p/w138_and_h175_face/${item.profile_path}`
+                              : `/images/default_user.png`
+                            }
                         `} alt={item.title} />
+                        </Link>
                         <h6>{item.name}</h6>
                         <span className="lighter">{item.character}</span>
                       </div>
@@ -119,12 +121,12 @@ class SimilarDetail extends Component {
               <div className="released_date mb-2">
                 <span>Released date:&nbsp;
                   <span className="text-secondary">
-                     {moment(movie.release_date).format("DD MMM YY")}
+                    {moment(movie.release_date).format("DD MMM YY")}
                   </span>
                 </span>
               </div>
               <div className="budget mt-2">
-              <span>Budget: <span className="text-secondary">{formatter.format(movie.budget)}</span></span>
+                <span>Budget: <span className="text-secondary">{formatter.format(movie.budget)}</span></span>
               </div>
               <div className="languages mt-2">
                 <h6>Languages</h6>
@@ -135,13 +137,13 @@ class SimilarDetail extends Component {
               <div className="genres mt-2">
                 <h6>Genres</h6>
                 {movie.genres && movie.genres.map((item, index) => {
-                  return ( 
+                  return (
                     <Tag color="orange" key={index}>
                       <Link to={`/genres/${item.name}/${item.id}`}>{item.name}</Link>
                     </Tag>
                   )
                 })}
-              </div>     
+              </div>
             </div>
           </div>
           <Divider />
@@ -179,25 +181,25 @@ class SimilarDetail extends Component {
             ? <Skeleton active avatar paragraph={{ rows: 4 }} />
             : (
               <div className="scrollmenu">
-                { videos.length 
-                ? videos.map((item, index) => {
-                  return (
-                    <iframe width="560" height="315" key={index}
-                      src={`https://www.youtube.com/embed/${item.key}`}
-                      title={item.key}
-                      frameBorder="0"
-                      allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-                      allowFullScreen>
-                    </iframe>
-                  )
-                })
-                : <span>No Trailers available</span>
-              }
+                {videos.length
+                  ? videos.map((item, index) => {
+                    return (
+                      <iframe width="560" height="315" key={index}
+                        src={`https://www.youtube.com/embed/${item.key}`}
+                        title={item.key}
+                        frameBorder="0"
+                        allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                        allowFullScreen>
+                      </iframe>
+                    )
+                  })
+                  : <span>No Trailers available</span>
+                }
               </div>
             )
           }
 
-            <Divider />
+          <Divider />
 
           {/* Reviews */}
           {this.props.loading

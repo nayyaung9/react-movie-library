@@ -1,5 +1,5 @@
 import movie from '../../api';
-import { GET_MOVIE_DETAIL_CREDIT_SUCCESS } from '../../constants/actionTypes';
+import { GET_MOVIE_DETAIL_CREDIT_SUCCESS, GET_SINGLE_CREDIT_SUCCESS } from '../../constants/actionTypes';
 
 function getMovieDetailCrews(data) {
   function success(casts, crews) {
@@ -15,7 +15,19 @@ function getMovieDetailCrews(data) {
   }
 }
 
+function getSingleCredit(data) {
+  function success(payload) {
+    return { type: GET_SINGLE_CREDIT_SUCCESS, payload }
+  }
+  return dispatch => {
+    movie.get(`/credit/${data.id}?api_key=${process.env.REACT_APP_API_KEY}`)
+    .then(
+      payload => dispatch(success(payload.data))
+    )
+  }
+}
 
 export const creditActions = {
-  getMovieDetailCrews
+  getMovieDetailCrews,
+  getSingleCredit
 }

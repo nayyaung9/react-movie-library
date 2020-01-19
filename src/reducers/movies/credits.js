@@ -1,8 +1,9 @@
-import { GET_MOVIE_DETAIL_CREDIT_SUCCESS } from '../../constants/actionTypes';
+import { GET_MOVIE_DETAIL_CREDIT_SUCCESS, GET_SINGLE_CREDIT_SUCCESS } from '../../constants/actionTypes';
 
 const initialState = {
   casts: [],
-  crews: []
+  crews: [],
+  singleCredit: {}
 }
 
 export default function(state = initialState, action) {
@@ -12,6 +13,11 @@ export default function(state = initialState, action) {
         ...state,
         casts: action.casts,
         crews: action.crews 
+      }
+    case GET_SINGLE_CREDIT_SUCCESS:
+      return {
+        ...state,
+        singleCredit: action.payload
       }
     default:
       return state;

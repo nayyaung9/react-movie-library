@@ -79,13 +79,15 @@ class UpComingDetail extends Component {
                   ? this.props.casts.map((item, index) => {
                     return (
                       <div key={index}>
-                        <img src={`
+                        <Link to={`/person/${item.credit_id}`}>
+                          <img src={`
                           ${
-                          item.profile_path !== null
-                            ? `https://image.tmdb.org/t/p/w138_and_h175_face/${item.profile_path}`
-                            : `/images/default_user.png`
-                          }
+                            item.profile_path !== null
+                              ? `https://image.tmdb.org/t/p/w138_and_h175_face/${item.profile_path}`
+                              : `/images/default_user.png`
+                            }
                         `} alt={item.title} />
+                        </Link>
                         <h6>{item.name}</h6>
                         <span className="lighter">{item.character}</span>
                       </div>

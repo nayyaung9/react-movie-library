@@ -14,6 +14,9 @@ import TopRated from './topRate/topRated';
 
 import Latest from './latest/Latest';
 
+// credit
+import SingleCredit from '../components/credit/singleCredit';
+
 import Playing from './Playing/Playing';
 import SinglePlaying from './Playing/SinglePlaying';
 
@@ -44,6 +47,8 @@ class App extends React.Component {
           <Route path='/upcoming/movie/:id' component={UpComingDetail} />
 
           <Route path='/top_rated/movies' component={TopRated} />
+
+          <Route path='/person/:id' component={SingleCredit} />
 
           <Route path='/latest' component={Latest} />
 

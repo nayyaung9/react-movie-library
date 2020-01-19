@@ -5,6 +5,7 @@ import { connect } from 'react-redux'
 
 import { Skeleton, Pagination } from 'antd';
 import { Link } from 'react-router-dom';
+import { Helmet } from "react-helmet";
 
 class UpComing extends Component {
   state = {
@@ -23,6 +24,9 @@ class UpComing extends Component {
   render() {
     return (
       <AppDrawer>
+        <Helmet>
+          <title>UpComing movies</title>
+        </Helmet>
         <div className="container">
           <h3>Upcoming movies</h3>
           <div className="row" style={{ marginBottom: '40px' }}>
@@ -31,12 +35,12 @@ class UpComing extends Component {
             </div>
           </div>
           <div className="row">
-          
+
             {this.props.upcomingLoading
               ? <Skeleton avatar active paragraph={{ rows: 4 }} />
-              : this.props.upcoming.map((item, index) => {
+              : this.props.upcoming && this.props.upcoming.map((item, index) => {
                 return (
-                  <div  className="col-md-3 col-6 cover_image_board" key={index}>
+                  <div className="col-md-3 col-6 cover_image_board" key={index}>
                     <Link to={`/upcoming/movie/${item.id}`}>
                       <img src={`https://image.tmdb.org/t/p/w185_and_h278_bestv2/${item.poster_path}`} className="cover__image" alt={item.title} />
                     </Link>
@@ -44,8 +48,8 @@ class UpComing extends Component {
                   </div>
                 )
               })}
-         </div>
-         <div className="row" style={{ marginBottom: '40px' }}>
+          </div>
+          <div className="row" style={{ marginBottom: '40px' }}>
             <div className="col-md-12 text-center">
               <Pagination current={this.state.page} total={this.props.pages} onChange={this.onPageChange} />
             </div>

@@ -37,7 +37,7 @@ class Popular extends Component {
                     <Link to={`/popular/movie/${item.id}`}>
                       <img src={`https://image.tmdb.org/t/p/w185_and_h278_bestv2/${item.poster_path}`} className="cover__image" alt={item.title} />
                     </Link>
-                    <h5>{item.title}</h5>
+                    <h6>{item.title}</h6>
                   </div>
                 )
               })}

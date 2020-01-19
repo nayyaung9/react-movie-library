@@ -11,6 +11,7 @@ import { Link } from 'react-router-dom';
 
 import { Avatar, Divider, Comment, Skeleton, Tag, Rate } from 'antd';
 import moment from 'moment';
+import { Helmet } from "react-helmet";
 
 const formatter = new Intl.NumberFormat('en-US', {
   style: 'currency',
@@ -41,6 +42,10 @@ class SinglePlaying extends Component {
     const { movie, videos } = this.props;
     return (
       <AppDrawer>
+         <Helmet>
+          <title>{movie.title}</title>
+          <meta name="description" content={movie.overview} />
+        </Helmet>
         <div className="board"
           style={{
             backgroundImage: `url(https://image.tmdb.org/t/p/w533_and_h300_bestv2/${movie.backdrop_path})`,
@@ -80,13 +85,15 @@ class SinglePlaying extends Component {
                   ? this.props.casts.map((item, index) => {
                     return (
                       <div key={index}>
-                        <img src={`
-                          ${
-                          item.profile_path !== null
-                            ? `https://image.tmdb.org/t/p/w138_and_h175_face/${item.profile_path}`
-                            : `/images/default_user.png`
-                          }
-                        `} alt={item.title} />
+                        <Link to={`/person/${item.credit_id}`}>
+                          <img src={`
+                            ${
+                            item.profile_path !== null
+                              ? `https://image.tmdb.org/t/p/w138_and_h175_face/${item.profile_path}`
+                              : `/images/default_user.png`
+                            }
+                          `} alt={item.title} />
+                        </Link>
                         <h6>{item.name}</h6>
                         <span className="lighter">{item.character}</span>
                       </div>
